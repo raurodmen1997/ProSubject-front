@@ -8,8 +8,10 @@ import { PagesComponent } from './pages.component';
 import { SharedModule } from '../shared/shared.module';
 import { BusquedaAsignaturaComponent } from './busqueda-asignatura/busqueda-asignatura.component';
 import { HomeComponent } from './home/home.component';
+import { ListadoProfesoresComponent } from './busqueda-asignatura/listado-profesores/listado-profesores.component';
 
-
+//----CRISTIAN----
+import { BrowserModule } from '@angular/platform-browser';
 
 
 
@@ -18,13 +20,15 @@ import { HomeComponent } from './home/home.component';
         PagesComponent,
         BusquedaAsignaturaComponent,
         HomeComponent,
+        ListadoProfesoresComponent,
     ],
     exports: [
     ],
     imports: [
         PAGES_ROUTES,
         FormsModule,
-        SharedModule
+        SharedModule,
+        BrowserModule
     ]
 })
 export class PagesModule { }
