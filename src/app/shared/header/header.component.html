@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand h1" routerLink="/"><img src="assets/images/ProSubjectLogo.png"  alt="">ProSubject</a>
+      <a class="navbar-brand h1" routerLink="/home"><img src="assets/images/ProSubjectLogo.png"  alt="">ProSubject</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -8,12 +8,14 @@
 
       <ul class="navbar-nav ml-auto">
     
-        <li class="nav-item">
-          <a class="nav-link" routerLink="#" routerLinkActivated="active"><i class="fas fa-user"></i>Login</a>
+        <li *ngFor="let i of header_service.menu" class="nav-item">
+          <a *ngIf="i.titulo == 'Login'" class="nav-link" routerLinkActive="active" [routerLink]="[ i.url ]"><i class="fas fa-user"></i> {{ i.titulo }} </a>
+          <a *ngIf="i.titulo != 'Login'" class="nav-link" routerLinkActive="active" [routerLink]="[ i.url ]"> {{ i.titulo }} </a>
         </li>
 
+        <!--
         <li class="nav-item">
-          <a class="nav-link" routerLink="#" routerLinkActivated="active">Component</a>
+          <a class="nav-link" routerLink="/busqueda-asignatura" routerLinkActivated="active">Busqueda de asignaturas</a>
         </li>
 
         <li class="nav-item dropdown">
@@ -25,6 +27,7 @@
             <a class="dropdown-item" routerLink="#">Component 2</a>
           </div>
         </li>
+        -->
             
       </ul>
     </div>
