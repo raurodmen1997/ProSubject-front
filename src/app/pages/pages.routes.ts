@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PagesComponent } from './pages.component';
 import { BusquedaAsignaturaComponent } from './busqueda-asignatura/busqueda-asignatura.component';
 import { HomeComponent } from './home/home.component';
+import { ListadoProfesoresComponent } from './busqueda-asignatura/listado-profesores/listado-profesores.component';
 
 
 
@@ -14,6 +15,11 @@ const pagesRoutes: Routes = [
         children: [
             { path: 'busqueda-asignatura', component: BusquedaAsignaturaComponent, data:{titulo:'Busqueda de asignatura'} },
             { path: 'inicio', component: HomeComponent, data:{titulo:'Inicio'} },
+
+
+            //----CRISTIAN----
+            {path:'profesores', component: ListadoProfesoresComponent, data: {titulo:'Listado profesores'}},
+
             { path: '', redirectTo: '/inicio', pathMatch: 'full' }
         ]
     }
