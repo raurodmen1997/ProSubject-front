@@ -12,6 +12,7 @@ import { ListadoProfesoresComponent } from './busqueda-asignatura/listado-profes
 
 //----CRISTIAN----
 import { BrowserModule } from '@angular/platform-browser';
+import { NgxPaginationModule } from "ngx-pagination";
 
 
 
@@ -28,7 +29,8 @@ import { BrowserModule } from '@angular/platform-browser';
         PAGES_ROUTES,
         FormsModule,
         SharedModule,
-        BrowserModule
+        BrowserModule,
+        NgxPaginationModule
     ]
 })
 export class PagesModule { }

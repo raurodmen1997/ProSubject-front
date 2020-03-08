@@ -15,10 +15,20 @@ export class ListadoProfesoresComponent implements OnInit {
       dni: '49124656-Z',
       email: 'cristian@hotmail.com',
       telefono: '646245374',
-      grado: 'Segundo',
-      universidad: 'Universidad de Sevilla',
-      titulacion: 'Ingeniería del Software',
-      sexo: 'H'
+      curso: {
+        id:2,
+        nombre:'Segundo'
+      },
+      universidad: {
+        id:1,
+        nombre:'Universidad de Sevilla'
+      },
+      grado: {
+        id:1,
+        nombre:'Ingeniería del Software'
+      },
+      sexo: 'H',
+      valoracionMedia: 4
     },
     {
       id:2,
@@ -27,10 +37,20 @@ export class ListadoProfesoresComponent implements OnInit {
       dni: '49124436-Y',
       email: 'laura@hotmail.com',
       telefono: '646245374',
-      grado: 'Tercero',
-      universidad: 'Universidad de Sevilla',
-      titulacion: 'Quimica',
-      sexo: 'M'
+      curso: {
+        id:3,
+        nombre:'Tercero'
+      },
+      universidad: {
+        id:2,
+        nombre:'Universidad de Sevilla'
+      },
+      grado: {
+        id:2,
+        nombre:'Química'
+      },
+      sexo: 'M',
+      valoracionMedia: 7
     },
     {
       id:3,
@@ -39,10 +59,20 @@ export class ListadoProfesoresComponent implements OnInit {
       dni: '49124656-Y',
       email: 'antonio@hotmail.com',
       telefono: '646245374',
-      grado: 'Primero',
-      universidad: 'Universidad de Sevilla',
-      titulacion: 'Magisterio',
-      sexo: 'H'
+      curso: {
+        id:1,
+        nombre:'Primero'
+      },
+      universidad: {
+        id:3,
+        nombre:'Universidad de Sevilla'
+      },
+      grado: {
+        id:3,
+        nombre:'Magisterio'
+      },
+      sexo: 'H',
+      valoracionMedia: 9
     },
     {
       id:4,
@@ -51,22 +81,86 @@ export class ListadoProfesoresComponent implements OnInit {
       dni: '49124651-Y',
       email: 'jesus@hotmail.com',
       telefono: '646245374',
-      grado: 'Cuarto',
-      universidad: 'Universidad de Sevilla',
-      titulacion: 'Project Manager',
-      sexo: 'H'
+      curso: {
+        id:4,
+        nombre:'Cuarto'
+      },
+      universidad: {
+        id:4,
+        nombre:'Universidad de Huelva'
+      },
+      grado: {
+        id:4,
+        nombre:'Matemáticas'
+      },
+      sexo: 'H',
+      valoracionMedia: 8.7
     },
     {
       id:5,
       nombre: 'Marisa',
       apellidos: 'Fernandez Martinez',
       dni: '49124651-Y',
-      email: 'maraisa@hotmail.com',
+      email: 'marisa@hotmail.com',
       telefono: '646245374',
-      grado: 'Cuarto',
-      universidad: 'Universidad de Sevilla',
-      titulacion: 'Física',
-      sexo: 'M'
+      curso: {
+        id:4,
+        nombre:'Cuarto'
+      },
+      universidad: {
+        id:5,
+        nombre:'Universidad de Sevilla'
+      },
+      grado: {
+        id:5,
+        nombre:'Física'
+      },
+      sexo: 'M',
+      valoracionMedia: 7
+    },
+    {
+      id:6,
+      nombre: 'Pedro',
+      apellidos: 'Brenes Alba',
+      dni: '49124651-Y',
+      email: 'pedro@hotmail.com',
+      telefono: '646245374',
+      curso: {
+        id:4,
+        nombre:'Cuarto'
+      },
+      universidad: {
+        id:6,
+        nombre:'Universidad de Madrid'
+      },
+      grado: {
+        id:6,
+        nombre:'Periodismo'
+      },
+      sexo: 'H',
+      valoracionMedia: 1
+    },
+    {
+      id:7,
+      nombre: 'Maria',
+      apellidos: 'Fernandez Martinez',
+      dni: '49124651-Y',
+      email: 'maria@hotmail.com',
+      telefono: '646245374',
+      curso: {
+        id:2,
+        nombre:'Segundo'
+      },
+      universidad: {
+        id:7,
+        nombre:'Universidad de Sevilla'
+      },
+      grado: {
+        id:7,
+        nombre:'Derecho'
+      },
+      sexo: 'M',
+      valoracionMedia: 10
     }
 
   ]
