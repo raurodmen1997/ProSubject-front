@@ -10,8 +10,11 @@ import { BusquedaAsignaturaComponent } from './busqueda-asignatura/busqueda-asig
 import { HomeComponent } from './home/home.component';
 import { CommonModule } from '@angular/common';
 
+import { ListadoProfesoresComponent } from './busqueda-asignatura/listado-profesores/listado-profesores.component';
 
-
+//----CRISTIAN----
+import { BrowserModule } from '@angular/platform-browser';
+import { NgxPaginationModule } from "ngx-pagination";
 
 
 
@@ -20,6 +23,7 @@ import { CommonModule } from '@angular/common';
         PagesComponent,
         BusquedaAsignaturaComponent,
         HomeComponent,
+        ListadoProfesoresComponent,
     ],
     exports: [
         CommonModule
@@ -29,7 +33,9 @@ import { CommonModule } from '@angular/common';
         FormsModule,
         SharedModule,
         ReactiveFormsModule,
-        CommonModule
+        CommonModule,
+        BrowserModule,
+        NgxPaginationModule
     ]
 })
 export class PagesModule { }

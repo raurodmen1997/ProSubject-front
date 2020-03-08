@@ -8,7 +8,10 @@ export class HeaderService {
   menu: any = [
     { titulo: 'Login', url: '#' },
     { titulo: 'Inicio', url: '/inicio' },
-    { titulo: 'Busqueda de asignatura', url: '/busqueda-asignatura' }
+    { titulo: 'Busqueda de asignatura', url: '/busqueda-asignatura' },
+
+    //----CRISTIAN----
+    { titulo: 'Listado profesores', url: '/profesores'}
    
   ];
 
