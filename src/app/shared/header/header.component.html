@@ -1,35 +1,20 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand h1" routerLink="/home"><img src="assets/images/ProSubjectLogo.png"  alt="">ProSubject</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse">
+      <a class="navbar-brand h1" routerLink="/inicio"><img src="assets/images/ProSubjectLogo.png"  alt="">ProSubject</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse">
 
-      <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto">
     
-        <li *ngFor="let i of header_service.menu" class="nav-item">
-          <a *ngIf="i.titulo == 'Login'" class="nav-link" routerLinkActive="active" [routerLink]="[ i.url ]"><i class="fas fa-user"></i> {{ i.titulo }} </a>
-          <a *ngIf="i.titulo != 'Login'" class="nav-link" routerLinkActive="active" [routerLink]="[ i.url ]"> {{ i.titulo }} </a>
-        </li>
-
-        <!--
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/busqueda-asignatura" routerLinkActivated="active">Busqueda de asignaturas</a>
-        </li>
-
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Component
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" routerLink="#">Component 1</a>
-            <a class="dropdown-item" routerLink="#">Component 2</a>
-          </div>
-        </li>
-        -->
+          <li *ngFor="let i of header_service.menu" class="nav-item">
+            <a *ngIf="i.titulo == 'Login'" class="nav-link" routerLinkActive="active" [routerLink]="[ i.url ]"><i class="fas fa-user"></i> {{ i.titulo }} </a>
+            <a *ngIf="i.titulo != 'Login'" class="nav-link" routerLinkActive="active" [routerLink]="[ i.url ]"> {{ i.titulo }} </a>
+          </li>
             
-      </ul>
+        </ul>
+      </div>
     </div>
-    </div>
-</nav>
+  </nav>
