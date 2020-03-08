@@ -5,7 +5,11 @@ RUN npm install
 COPY . .
 RUN npm run build --prod
 
-FROM nginx:1.16.0-alpine as prod-stage
-COPY --from=build-step /app/dist/ProSubject /usr/share/nginx/html
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+FROM nginx:alpine-perl as prod-stage
+COPY docker/nginx/default.conf.template /etc/nginx/conf.d/default.conf.template
+
+RUN rm -rf /usr/share/nginx/html/*
+COPY --from=build-step app/dist/ProSubject /usr/share/nginx/html
+
+## startup.sh script is launched at container run
+CMD /bin/sh -c "envsubst '\$PORT' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf" && nginx -g 'daemon off;'
