@@ -996,8 +996,14 @@ File: scss
 
 .page-wrapper {
   background: #f4f6f9;
-  padding-bottom: 60px;
+  /*padding-bottom: 60px;*/
   position: relative; }
+
+#wrapper {
+  background: #f4f6f9;
+  /*padding-bottom: 60px;*/
+  position: relative; }
+
 
 .container-fluid {
   padding: 25px 25px; }
