@@ -1,32 +1,24 @@
-
 <div class="row">
-    <div class="col-md-1">
+    <div class="col-md-4" *ngFor="let profesor of profesores | paginate: { itemsPerPage: 6, currentPage: currentPage }">
+        <div class="card text-center">
+            <div class="card-header bg-warning text-dark h5 f-flex justify-content-between align-items-center">
+                <strong>{{profesor.apellidos}}, {{profesor.nombre}}</strong>
+            </div>
 
+            <div *ngIf="profesor.sexo == 'M' ; else H">
+                <img class="card-img-top" src="assets/images/ProSubjectAvatarM.jpg" >
+            </div>
+            <ng-template #H>
+                <img class="card-img-top" src="assets/images/ProSubjectAvatarH.jpg" >
+            </ng-template>
+
+            <div class="card-body bg-warning text-dark h6">
+                <strong>Universidad: </strong> <p>{{profesor.universidad.nombre}}</p>
+                <strong>Grado: </strong><p>{{profesor.grado.nombre}}</p>
+                <strong>Curso: </strong><p>{{profesor.curso.nombre}}</p>
+            </div>
+        </div>
     </div>
-    <table class="table col-md-10 table-responsive table-hover">
-        <thead class="bg-dark text-dark h5 ">
-            <tr>
-              <th scope="col">Nombre</th>
-              <th scope="col">Apellidos</th>
-              <th scope="col">Univesidad</th>
-              <th scope="col">Grado</th>
-              <th scope="col">Curso</th>
-              <th scope="col">Valoración</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            <tr class="text-center" *ngFor="let profesor of profesores | paginate: { itemsPerPage: 6, currentPage: currentPage }">
-                <td>{{profesor.nombre}}</td>
-                <td>{{profesor.apellidos}}</td>
-                <td>{{profesor.universidad.nombre}}</td>
-                <td>{{profesor.grado.nombre}}</td>
-                <td>{{profesor.curso.nombre}}</td>
-                <td>{{profesor.valoracionMedia}}</td>
-            </tr>
-        </tbody>
-    </table>
-
 </div>
 
 <div class="text-center sticky-top">
