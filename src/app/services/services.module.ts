@@ -2,8 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import {
-    HeaderService
+    HeaderService,
+    BusquedaAsignaturaService,
+    GradoService,
+    EspacioService,
+    CursoService
  } from './services.index';
+
 
 
 @NgModule({
@@ -11,7 +16,11 @@ import {
     CommonModule
   ],
   providers: [
-    HeaderService
+    HeaderService,
+    BusquedaAsignaturaService,
+    GradoService,
+    EspacioService,
+    CursoService
   ],
   declarations: []
 })
