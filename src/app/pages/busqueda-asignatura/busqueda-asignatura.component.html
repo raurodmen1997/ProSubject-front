@@ -7,13 +7,13 @@
                     <div class="col-md-3 mb-3">
                         <label>Universidad</label>
                         <select class="form-control" formControlName="universidad">
-                            <option *ngFor="let valor of lista" [value]="valor">{{valor}}</option>
+                            <option *ngFor="let valor of universidades" [value]="valor.nombre">{{valor.nombre}}</option>
                         </select>
                     </div>
                     <div class="col-md-3 mb-3">
                         <label>Grado</label>
                         <select class="form-control" formControlName="grado">
-                            <option *ngFor="let valor of lista" [value]="valor">{{valor}}</option>
+                            <option *ngFor="let valor of grados" [value]="valor.nombre">{{valor.nombre}}</option>
                         </select>
                     </div>
                     <div class="col-md-3 mb-3">
