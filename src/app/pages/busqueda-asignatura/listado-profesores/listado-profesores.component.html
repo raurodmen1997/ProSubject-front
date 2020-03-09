@@ -1,21 +1,18 @@
 <div class="row">
-    <div class="col-md-4" *ngFor="let profesor of profesores | paginate: { itemsPerPage: 6, currentPage: currentPage }">
+    <div class="col-md-4" *ngFor="let espacio of espacios | paginate: { itemsPerPage: 6, currentPage: currentPage }">
         <div class="card text-center">
             <div class="card-header bg-warning text-dark h5 f-flex justify-content-between align-items-center">
-                <strong>{{profesor.apellidos}}, {{profesor.nombre}}</strong>
+                <strong>{{espacio.profesor.nombre}}</strong>
             </div>
 
-            <div *ngIf="profesor.sexo == 'M' ; else H">
-                <img class="card-img-top" src="assets/images/ProSubjectAvatarM.jpg" >
-            </div>
-            <ng-template #H>
-                <img class="card-img-top" src="assets/images/ProSubjectAvatarH.jpg" >
-            </ng-template>
+           
+            <img class="card-img-top" src="assets/images/ProSubjectAvatarM.jpg" >
+            
 
             <div class="card-body bg-warning text-dark h6">
-                <strong>Universidad: </strong> <p>{{profesor.universidad.nombre}}</p>
-                <strong>Grado: </strong><p>{{profesor.grado.nombre}}</p>
-                <strong>Curso: </strong><p>{{profesor.curso.nombre}}</p>
+                <strong>Curso: </strong><p>{{espacio.asignatura.curso.nombre}}</p>
+                <strong>Curso: </strong><p>{{espacio.asignatura.curso.nombre}}</p>
+                <strong>Asignatura: </strong><p>{{espacio.asignatura.nombre}}</p>
             </div>
         </div>
     </div>
