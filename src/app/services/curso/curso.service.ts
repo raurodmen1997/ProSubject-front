@@ -6,13 +6,13 @@ import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class BusquedaAsignaturaService {
-  private urlEndPoint: string = 'http://localhost:8080/api/universidades';
+export class CursoService {
+  private urlEndPoint: string = 'http://localhost:8080/api/cursos';
 
   //Inyección de dependencia
   constructor(private http: HttpClient) { }
 
-  getUniversidades(): Observable<any[]> {
+  getCursos(): Observable<any[]> {
     return this.http.get(this.urlEndPoint).pipe(
       map(response => response as any[])
     );
