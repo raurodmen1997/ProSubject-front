@@ -2,37 +2,65 @@
     <div class="row">
         <div class="col-12">
             <form novalidate [formGroup]="form" (ngSubmit)="buscar()">
-
+                <!--col-md-3 mb-3-->
+                
                 <div class="form-row">
                     <div class="col-md-3 mb-3">
                         <label>Universidad</label>
                         <select class="form-control" formControlName="universidad">
+                            <option></option>
                             <option *ngFor="let valor of universidades" [value]="valor.nombre">{{valor.nombre}}</option>
                         </select>
                     </div>
+
+                    <div class="col-md-3 mb-3">
+                        <label>Facultades</label>
+                        <select class="form-control" formControlName="facultad">
+                            <option></option>
+                            <option *ngFor="let valor of facultades" [value]="valor.nombre">{{valor.nombre}}</option>
+                        </select>
+                    </div>
+
                     <div class="col-md-3 mb-3">
                         <label>Grado</label>
                         <select class="form-control" formControlName="grado">
+                            <option></option>
                             <option *ngFor="let valor of grados" [value]="valor.nombre">{{valor.nombre}}</option>
                         </select>
                     </div>
+
                     <div class="col-md-3 mb-3">
                         <label>Curso</label>
                         <select class="form-control" formControlName="curso">
-                            <option *ngFor="let valor of lista" [value]="valor">{{valor}}</option>
+                            <option></option>
+                            <option *ngFor="let valor of cursos" [value]="valor.nombre">{{valor.nombre}}</option>
                         </select>
                     </div>
+
                     <div class="col-md-3 mb-3">
                         <label>Asignatura</label>
                         <select class="form-control" formControlName="asignatura">
-                            <option *ngFor="let valor of lista" [value]="valor">{{valor}}</option>
+                            <option *ngFor="let valor of asignaturas" [value]="valor.nombre">{{valor.nombre}}</option>
                         </select>
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary" >
+                <button [disabled]= "!form.valid" type="submit" class="btn btn-primary" >
                     Buscar
                 </button>
+    
+                <button (click) = "reset()" type="button" class="btn btn-primary ml-2" >
+                    Limpiar
+                </button>
+
+                
+
+                
+                <div *ngIf= "espacios != null" class="row">
+                    <app-listado-profesores [espacios] = "espacios"></app-listado-profesores>
+                </div>
+                
+                
                  
 
             </form>

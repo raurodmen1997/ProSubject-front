@@ -6,7 +6,9 @@ import {
     BusquedaAsignaturaService,
     GradoService,
     EspacioService,
-    CursoService
+    CursoService,
+    AsignaturaService,
+    FacultadService
  } from './services.index';
 
 
@@ -20,7 +22,9 @@ import {
     BusquedaAsignaturaService,
     GradoService,
     EspacioService,
-    CursoService
+    CursoService,
+    AsignaturaService,
+    FacultadService
   ],
   declarations: []
 })

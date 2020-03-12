@@ -17,4 +17,12 @@ export class EspacioService {
       map(response => response as any[])
     );
   }
+
+
+  getEspaciosPorParametros(universidad:string, facultad:string, grado:string, curso:string, asignatura:string):Observable<any[]> {
+    let url:string = `${this.urlEndPoint}/espaciosDisponibles?universidad=${universidad}&facultad=${facultad}&grado=${grado}&curso=${curso}&asignatura=${asignatura}`;
+    return this.http.get(url).pipe(
+      map(response => response as any[])
+    );
+  }
 }
