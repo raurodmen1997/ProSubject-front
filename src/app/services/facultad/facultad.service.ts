@@ -6,26 +6,28 @@ import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class GradoService {
+export class FacultadService {
 
-  private urlEndPoint: string = 'http://localhost:8080/api/grados';
+  private urlEndPoint: string = 'http://localhost:8080/api/facultades';
 
-  //Inyección de dependencia
   constructor(private http: HttpClient) { }
 
-  getGrados(): Observable<any[]> {
+
+  getFacultades(): Observable<any[]> {
     return this.http.get(this.urlEndPoint).pipe(
       map(response => response as any[])
     );
   }
 
-  getGradosPorUniversidadYFacultad(universidad:string, facultad:string):Observable<any[]> {
-    let url:string = `${this.urlEndPoint}/busquedaGrados?universidad=${universidad}&facultad=${facultad}`;
+
+  getFacultadesPorUniversidad(universidad:string):Observable<any[]> {
+    let url:string = `${this.urlEndPoint}/busquedaFacultades?universidad=${universidad}`;
     return this.http.get(url).pipe(
       map(response => response as any[])
     );
-  }
-
-
+    
   
+
+    
+  }
 }

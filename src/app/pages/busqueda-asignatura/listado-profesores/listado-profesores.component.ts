@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { EspacioService } from "../../../services/espacio/espacio.service";
 
 @Component({
@@ -8,11 +8,12 @@ import { EspacioService } from "../../../services/espacio/espacio.service";
 })
 export class ListadoProfesoresComponent implements OnInit {
 
-  espacios: any[];
+  @Input() espacios: any[];
 
   constructor(private espacioService: EspacioService) { }
 
   ngOnInit(): void {
+    /*
     this.espacioService.getEspacios().subscribe(
 
       res => {this.espacios = res;
@@ -20,6 +21,8 @@ export class ListadoProfesoresComponent implements OnInit {
         
       erro => console.log(erro)
     )
+    */
   }
+  
 
 }
