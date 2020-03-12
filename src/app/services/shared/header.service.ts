@@ -12,6 +12,7 @@ export class HeaderService {
 
     //----CRISTIAN----
     { titulo: 'Listado profesores', url: '/profesores'},
+    { titulo: 'Creación de espacio', url: '/creacion-espacio'}
    
   ];
 

@@ -5,6 +5,7 @@ import { BusquedaAsignaturaComponent } from './busqueda-asignatura/busqueda-asig
 import { HomeComponent } from './home/home.component';
 import { ListadoProfesoresComponent } from './busqueda-asignatura/listado-profesores/listado-profesores.component';
 import { LoginComponent } from './login/login.component';
+import { CreacionEspacioComponent } from './creacion-espacio/creacion-espacio.component';
 
 
 
@@ -21,6 +22,7 @@ const pagesRoutes: Routes = [
 
             //----CRISTIAN----
             {path:'profesores', component: ListadoProfesoresComponent, data: {titulo:'Listado profesores'}},
+            {path:'creacion-espacio', component: CreacionEspacioComponent, data:{titulo:'Creacion de espacio'}},
 
             { path: '', redirectTo: '/inicio', pathMatch: 'full' }
         ]

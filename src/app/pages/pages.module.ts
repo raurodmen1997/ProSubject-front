@@ -16,6 +16,7 @@ import { ListadoProfesoresComponent } from './busqueda-asignatura/listado-profes
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxPaginationModule } from "ngx-pagination";
 import { LoginComponent } from './login/login.component';
+import { CreacionEspacioComponent } from './creacion-espacio/creacion-espacio.component';
 
 
 
@@ -26,6 +27,7 @@ import { LoginComponent } from './login/login.component';
         HomeComponent,
         ListadoProfesoresComponent,
         LoginComponent,
+        CreacionEspacioComponent,
     ],
     exports: [
         CommonModule
