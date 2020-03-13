@@ -8,21 +8,14 @@
 
             <div class="card-body  text-dark h6" id="parentCard">
                 <i class="fas fa-book"></i> {{espacio.asignatura.nombre}}<br/><br/>
-                <div class="row">
-                    
-                    <div class="col-md-6" *ngFor="let grado of espacio.asignatura.grados">
-                        <div class="card rounded" id="childCard">
-                            <i class="fas fa-user-graduate"></i>{{grado.nombre}}<br/><br/>
-                            <i class="fas fa-building"></i>{{grado.facultad.nombre}}<br/><br/>
-                            <i class="fas fa-university"></i>{{grado.facultad.universidad.nombre}}
-                        </div>
-                    </div>
-                </div>
+                
                 <div class="row">
                     <div class="col-md-6"><i class="fas fa-money-bill-wave"></i> {{espacio.precio}}€</div>
                     <div class="col-md-6"><i class="fas fa-users"></i> {{espacio.capacidad}}</div>
                 </div>
+                <button (click)="detallesEspacio()" class="btn btn-primary">Ver detalles</button>
             </div>
+            
         </div>
     </div>
 </div>

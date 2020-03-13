@@ -25,4 +25,11 @@ export class EspacioService {
       map(response => response as any[])
     );
   }
+
+  getEspaciosPorId(id: Number){
+    let url:string = `${this.urlEndPoint}/${id}`;
+    return this.http.get(url).pipe(
+      map(response => response as any)
+    )
+  }
 }

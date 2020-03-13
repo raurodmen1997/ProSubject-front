@@ -11,8 +11,8 @@ export class HeaderService {
     { titulo: 'Busqueda de asignatura', url: '/busqueda-asignatura' },
 
     //----CRISTIAN----
-    { titulo: 'Listado profesores', url: '/profesores'},
-    { titulo: 'Creación de espacio', url: '/creacion-espacio'}
+    { titulo: 'Creación de espacio', url: '/creacion-espacio'},
+
    
   ];
 

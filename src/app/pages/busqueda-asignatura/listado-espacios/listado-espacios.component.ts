@@ -1,16 +1,18 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { EspacioService } from "../../../services/espacio/espacio.service";
 
+import { Router } from "@angular/router";
+
 @Component({
-  selector: 'app-listado-profesores',
-  templateUrl: './listado-profesores.component.html',
-  styleUrls: ['./listado-profesores.component.css']
+  selector: 'app-listado-espacios',
+  templateUrl: './listado-espacios.component.html',
+  styleUrls: ['./listado-espacios.component.css']
 })
-export class ListadoProfesoresComponent implements OnInit {
+export class ListadoEspaciosComponent implements OnInit {
 
   @Input() espacios: any[];
 
-  constructor(private espacioService: EspacioService) { }
+  constructor(private espacioService: EspacioService, private router: Router) { }
 
   ngOnInit(): void {
     /*
@@ -24,5 +26,8 @@ export class ListadoProfesoresComponent implements OnInit {
     */
   }
   
+  detallesEspacio(){
+    this.router.navigate(['detalles-espacio'])
+  }
 
 }

@@ -3,9 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { PagesComponent } from './pages.component';
 import { BusquedaAsignaturaComponent } from './busqueda-asignatura/busqueda-asignatura.component';
 import { HomeComponent } from './home/home.component';
-import { ListadoProfesoresComponent } from './busqueda-asignatura/listado-profesores/listado-profesores.component';
 import { LoginComponent } from './login/login.component';
 import { CreacionEspacioComponent } from './creacion-espacio/creacion-espacio.component';
+import { DetallesEspacioComponent } from './busqueda-asignatura/detalles-espacio/detalles-espacio.component';
 
 
 
@@ -21,8 +21,8 @@ const pagesRoutes: Routes = [
 
 
             //----CRISTIAN----
-            {path:'profesores', component: ListadoProfesoresComponent, data: {titulo:'Listado profesores'}},
             {path:'creacion-espacio', component: CreacionEspacioComponent, data:{titulo:'Creacion de espacio'}},
+            {path:'detalles-espacio', component: DetallesEspacioComponent, data:{titulo: 'Detalles de espacio'}},
 
             { path: '', redirectTo: '/inicio', pathMatch: 'full' }
         ]

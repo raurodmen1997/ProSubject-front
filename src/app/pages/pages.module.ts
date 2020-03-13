@@ -10,13 +10,14 @@ import { BusquedaAsignaturaComponent } from './busqueda-asignatura/busqueda-asig
 import { HomeComponent } from './home/home.component';
 import { CommonModule } from '@angular/common';
 
-import { ListadoProfesoresComponent } from './busqueda-asignatura/listado-profesores/listado-profesores.component';
+import { ListadoEspaciosComponent } from './busqueda-asignatura/listado-espacios/listado-espacios.component';
 
 //----CRISTIAN----
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxPaginationModule } from "ngx-pagination";
 import { LoginComponent } from './login/login.component';
 import { CreacionEspacioComponent } from './creacion-espacio/creacion-espacio.component';
+import { DetallesEspacioComponent } from './busqueda-asignatura/detalles-espacio/detalles-espacio.component';
 
 
 
@@ -25,9 +26,10 @@ import { CreacionEspacioComponent } from './creacion-espacio/creacion-espacio.co
         PagesComponent,
         BusquedaAsignaturaComponent,
         HomeComponent,
-        ListadoProfesoresComponent,
+        ListadoEspaciosComponent,
         LoginComponent,
         CreacionEspacioComponent,
+        DetallesEspacioComponent,
     ],
     exports: [
         CommonModule
