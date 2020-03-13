@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EspacioService } from "../../../services/espacio/espacio.service";
+import { Router } from "@angular/router";
 
 
 @Component({
@@ -11,7 +12,8 @@ export class DetallesEspacioComponent implements OnInit {
 
   espacio: any = {};
 
-  constructor(private espacioService: EspacioService) { }
+  constructor(private espacioService: EspacioService,
+    private router: Router) { }
 
   ngOnInit() {
 
@@ -22,6 +24,10 @@ export class DetallesEspacioComponent implements OnInit {
     },
       error => console.log(error)
     )
+  }
+
+  irBusquedaAsignaturas(){
+    this.router.navigate(['busqueda-asignatura']);
   }
 
 }
