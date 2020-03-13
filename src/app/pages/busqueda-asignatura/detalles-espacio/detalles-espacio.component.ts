@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EspacioService } from "../../../services/espacio/espacio.service";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 
 
 @Component({
@@ -13,11 +13,14 @@ export class DetallesEspacioComponent implements OnInit {
   espacio: any = {};
 
   constructor(private espacioService: EspacioService,
-    private router: Router) { }
+    private router: Router,
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
 
-    this.espacioService.getEspaciosPorId(1).subscribe(
+    const params = this.activatedRoute.snapshot.params;
+
+    this.espacioService.getEspaciosPorId(params.id).subscribe(
       res => {
         this.espacio = res,
       console.log(this.espacio)

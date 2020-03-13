@@ -22,7 +22,7 @@ const pagesRoutes: Routes = [
 
             //----CRISTIAN----
             {path:'creacion-espacio', component: CreacionEspacioComponent, data:{titulo:'Creacion de espacio'}},
-            {path:'detalles-espacio', component: DetallesEspacioComponent, data:{titulo: 'Detalles de espacio'}},
+            {path:'detalles-espacio/:id', component: DetallesEspacioComponent, data:{titulo: 'Detalles de espacio'}},
 
             { path: '', redirectTo: '/inicio', pathMatch: 'full' }
         ]
