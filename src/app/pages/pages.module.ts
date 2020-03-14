@@ -15,10 +15,11 @@ import { ListadoEspaciosComponent } from './busqueda-asignatura/listado-espacios
 //----CRISTIAN----
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxPaginationModule } from "ngx-pagination";
+import { NgxMaterialTimepickerModule } from "ngx-material-timepicker";
 import { LoginComponent } from './login/login.component';
 import { CreacionEspacioComponent } from './creacion-espacio/creacion-espacio.component';
 import { DetallesEspacioComponent } from './busqueda-asignatura/detalles-espacio/detalles-espacio.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -41,7 +42,9 @@ import { DetallesEspacioComponent } from './busqueda-asignatura/detalles-espacio
         ReactiveFormsModule,
         CommonModule,
         BrowserModule,
-        NgxPaginationModule
+        NgxPaginationModule,
+        NgxMaterialTimepickerModule,
+        BrowserAnimationsModule
     ]
 })
 export class PagesModule { }

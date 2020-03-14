@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { BusquedaAsignaturaService } from 'src/app/services/busqueda-asignatura/busqueda-asignatura.service';
 import { GradoService, CursoService, AsignaturaService, FacultadService, EspacioService } from 'src/app/services/services.index';
 
@@ -18,6 +18,8 @@ export class CreacionEspacioComponent implements OnInit {
   grados: any[];
   cursos: any[];
   asignaturas: any[];
+
+  diasSemana: any[] = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes']
 
   constructor(private fb: FormBuilder,
     private busquedaAsignaturaService: BusquedaAsignaturaService,
@@ -50,7 +52,15 @@ export class CreacionEspacioComponent implements OnInit {
       curso: new FormControl('', Validators.required),
       asignatura: new FormControl('', Validators.required),
       precio: new FormControl('', [Validators.required, Validators.min(0)]),
-      capacidad: new FormControl('', [Validators.required, Validators.min(1)])
+      capacidad: new FormControl('', [Validators.required, Validators.min(1)]),
+      
+      horario: this.fb.array([
+        this.fb.group({
+          dia: new FormControl(''),
+          horaInicio: new FormControl(''),
+          horaFin: new FormControl('')
+        })
+      ])
     })
 
 
@@ -98,6 +108,18 @@ export class CreacionEspacioComponent implements OnInit {
 
 
     });
+  }
+
+  get horarios(){
+    return this.form.get('horario') as FormArray;
+  }
+
+  addNuevoHorario(){
+    this.horarios.push(this.fb.group({
+      dia: new FormControl(''),
+      horaInicio: new FormControl(''),
+      horaFin: new FormControl('')
+    }))
   }
 
   submit(){
