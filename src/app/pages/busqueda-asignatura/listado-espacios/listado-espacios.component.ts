@@ -15,18 +15,9 @@ export class ListadoEspaciosComponent implements OnInit {
     private router:Router) { }
 
   ngOnInit(): void {
-    /*
-    this.espacioService.getEspacios().subscribe(
-
-      res => {this.espacios = res;
-        console.log(this.espacios)},
-        
-      erro => console.log(erro)
-    )
-    */
   }
 
-  detalleEspacio(id){
+  detalleEspacio(id:number){
     this.router.navigate(['detalles-espacio', id])
   }
 
