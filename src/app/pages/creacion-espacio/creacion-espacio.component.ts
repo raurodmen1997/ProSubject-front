@@ -29,6 +29,12 @@ export class CreacionEspacioComponent implements OnInit {
     horarios:[]
   }
 
+  horario:any = { 
+    dia:'',
+    fechaInicio:'',
+    fechaFin:''
+  }
+
   diasSemana: any[] = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', "Sabado", "Domingo"]
 
   constructor(private fb: FormBuilder,
@@ -67,8 +73,7 @@ export class CreacionEspacioComponent implements OnInit {
       profesor: new FormControl('1'),
 
       precio: new FormControl('', [Validators.required, Validators.min(0), Validators.pattern('^[0-9]{1,}(\\.[0-9]{1,2})?$')]),
-      capacidad: new FormControl('', [Validators.required, Validators.min(1), Validators.pattern("^[0-9]+$")]),
-      
+      capacidad: new FormControl('', [Validators.required, Validators.min(1), Validators.pattern("^[0-9]+$")]),      
       horarios: this.fb.array([
         this.fb.group({
           dia: new FormControl('', Validators.required),
@@ -77,7 +82,6 @@ export class CreacionEspacioComponent implements OnInit {
         })
       ])
     })
-
 
     //CAMBIOS EN EL SELECT DE UNIVERSIDAD
     this.form.get('universidad').valueChanges.subscribe(data=>{
@@ -105,7 +109,6 @@ export class CreacionEspacioComponent implements OnInit {
         this.grados = [];
       }
 
-
     });
 
     //CAMBIO EN EL SELECT DE CURSO
@@ -119,7 +122,6 @@ export class CreacionEspacioComponent implements OnInit {
         this.form.get('asignaturas').setValue('');
         this.asignaturas = [];
       }
-
 
     });
   }
@@ -160,14 +162,21 @@ export class CreacionEspacioComponent implements OnInit {
       error => console.log(error)
     )
 
+    this.form.get('horarios').value.forEach(element =>{
+      this.horario.dia = element.dia;
+      this.horario.fechaInicio = element.fechaInicio;
+      this.horario.fechaFin = element.fechaFin;
+      
+      this.espacio.horarios.push(this.horario)
+      
+    })
+
     this.espacio.capacidad = this.form.get('capacidad').value;
     this.espacio.precio = this.form.get('precio').value;
-    
-    console.log(this.espacio)
   }
 
   submit(){
-    //this.convertirFecha()
+    this.convertirFecha()
     
     this.crearEspacio();
 
