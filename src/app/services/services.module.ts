@@ -8,7 +8,8 @@ import {
     EspacioService,
     CursoService,
     AsignaturaService,
-    FacultadService
+    FacultadService,
+    LoginService
  } from './services.index';
 
 
@@ -24,7 +25,8 @@ import {
     EspacioService,
     CursoService,
     AsignaturaService,
-    FacultadService
+    FacultadService,
+    LoginService
   ],
   declarations: []
 })

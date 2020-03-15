@@ -6,6 +6,8 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { CreacionEspacioComponent } from './creacion-espacio/creacion-espacio.component';
 import { DetallesEspacioComponent } from './busqueda-asignatura/detalles-espacio/detalles-espacio.component';
+import { EspaciosProfesorComponent } from './espacios-profesor/espacios-profesor.component';
+import { EspaciosAlumnoComponent } from './espacios-alumno/espacios-alumno.component';
 
 
 
@@ -23,7 +25,8 @@ const pagesRoutes: Routes = [
             //----CRISTIAN----
             {path:'creacion-espacio', component: CreacionEspacioComponent, data:{titulo:'Creacion de espacio'}},
             {path:'detalles-espacio/:id', component: DetallesEspacioComponent, data:{titulo: 'Detalles de espacio'}},
-
+            {path:'espacios-profesor', component: EspaciosProfesorComponent, data:{titulo: 'Espacios profesor'}},
+            {path:'espacios-alumno', component: EspaciosAlumnoComponent, data:{titulo: 'Espacios alumno'}},
             { path: '', redirectTo: '/inicio', pathMatch: 'full' }
         ]
     }

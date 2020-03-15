@@ -18,7 +18,8 @@ import { NgxPaginationModule } from "ngx-pagination";
 import { LoginComponent } from './login/login.component';
 import { CreacionEspacioComponent } from './creacion-espacio/creacion-espacio.component';
 import { DetallesEspacioComponent } from './busqueda-asignatura/detalles-espacio/detalles-espacio.component';
-
+import { EspaciosProfesorComponent } from './espacios-profesor/espacios-profesor.component';
+import { EspaciosAlumnoComponent } from './espacios-alumno/espacios-alumno.component';
 
 
 @NgModule({
@@ -30,6 +31,8 @@ import { DetallesEspacioComponent } from './busqueda-asignatura/detalles-espacio
         LoginComponent,
         CreacionEspacioComponent,
         DetallesEspacioComponent,
+        EspaciosProfesorComponent,
+        EspaciosAlumnoComponent,
     ],
     exports: [
         CommonModule
