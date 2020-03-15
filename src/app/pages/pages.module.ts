@@ -19,7 +19,12 @@ import { NgxMaterialTimepickerModule } from "ngx-material-timepicker";
 import { LoginComponent } from './login/login.component';
 import { CreacionEspacioComponent } from './creacion-espacio/creacion-espacio.component';
 import { DetallesEspacioComponent } from './busqueda-asignatura/detalles-espacio/detalles-espacio.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { EspaciosProfesorComponent } from './espacios-profesor/espacios-profesor.component';
+import { EspaciosAlumnoComponent } from './espacios-alumno/espacios-alumno.component';
+
 
 
 @NgModule({
@@ -31,6 +36,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         LoginComponent,
         CreacionEspacioComponent,
         DetallesEspacioComponent,
+        EspaciosProfesorComponent,
+        EspaciosAlumnoComponent,
     ],
     exports: [
         CommonModule

@@ -8,7 +8,8 @@ import {
     EspacioService,
     CursoService,
     AsignaturaService,
-    FacultadService
+    FacultadService,
+    LoginService
  } from './services.index';
 import { ProfesorService } from './profesor/profesor.service';
 
@@ -26,7 +27,8 @@ import { ProfesorService } from './profesor/profesor.service';
     CursoService,
     AsignaturaService,
     FacultadService,
-    ProfesorService
+    ProfesorService,
+    LoginService
   ],
   declarations: []
 })

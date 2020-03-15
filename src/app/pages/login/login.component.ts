@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { LoginService } from 'src/app/services/services.index';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   form:FormGroup;
 
-  constructor(private fb:FormBuilder) { }
+  constructor(private fb:FormBuilder, private loginService: LoginService, private route:Router) { }
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -20,8 +22,15 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  //REALIZA LA ACCIÓN DEL LOGIN
   signIn(){
-    window.alert('Usuario: ' + this.form.get('usuario').value + '\nContraseña: ' + this.form.get('contraseña').value)
+    this.loginService.login(this.form.get('usuario').value, this.form.get('contraseña').value).subscribe(user=>{
+      this.loginService.usuarioLogueado = user;
+      console.log(this.loginService.usuarioLogueado);
+      localStorage.setItem('usuario', JSON.stringify(this.loginService.usuarioLogueado));
+      this.route.navigate(['inicio']);
+    });
+
   }
 
 }

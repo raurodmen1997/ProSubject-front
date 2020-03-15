@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+
+
+
+import { map, catchError } from 'rxjs/operators';
+import swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -30,11 +34,23 @@ export class EspacioService {
     );
   }
 
-  getEspaciosPorId(id: Number){
+  getEspaciosPorId(id: number){
     let url:string = `${this.urlEndPoint}/${id}`;
     return this.http.get(url).pipe(
       map(response => response as any)
-    )
+    );
+  }
+
+  getEspaciosPorProfesor(profesorId: number){
+    let url:string = `${this.urlEndPoint}/espaciosProfesor/${profesorId}`;
+    return this.http.get(url).pipe(
+      map(response => response as any[]),
+      catchError(e =>{
+        console.error(e.error.mensaje);
+        swal.fire('Error al acceder a los espacios de un profesor.', `${e.error.mensaje}`, 'error');
+        return throwError(e);
+      })
+    );
   }
 
   guardarEspacio(espacio: any){
@@ -44,4 +60,29 @@ export class EspacioService {
     );
   }
 
+  getEspaciosPorEstudiante(estudianteId: number){
+    let url:string = `${this.urlEndPoint}/espaciosAlumno/${estudianteId}`;
+    return this.http.get(url).pipe(
+      map(response => response as any[]),
+      catchError(e =>{
+        console.error(e.error.mensaje);
+        swal.fire('Error al acceder a los espacios de un alumno.', `${e.error.mensaje}`, 'error');
+        return throwError(e);
+      })
+    );
+  }
+
+
+  insertarAlumno(espacioId:number, alumnoId:number){
+    let url:string = `${this.urlEndPoint}/insertarAlumno?espacioId=${espacioId}&alumnoId=${alumnoId}`;
+    return this.http.put(url, {}).pipe(
+      map(response => response as any),
+      catchError(e =>{
+        console.error(e.error.mensaje);
+        swal.fire('Error al inscribirse en el espacio.', `${e.error.mensaje}`, 'error');
+        return throwError(e);
+      })
+
+    );
+  }
 }

@@ -10,8 +10,16 @@
         <ul class="navbar-nav ml-auto">
     
           <li *ngFor="let i of header_service.menu" class="nav-item">
-            <a *ngIf="i.titulo == 'Login'" class="nav-link" routerLinkActive="active" [routerLink]="[ i.url ]"><i class="fas fa-user"></i> {{ i.titulo }} </a>
             <a *ngIf="i.titulo != 'Login'" class="nav-link" routerLinkActive="active" [routerLink]="[ i.url ]"> {{ i.titulo }} </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Perfil</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Perfil</a>
+              <a class="dropdown-item" routerLinkActive="active" routerLink="/login"><i class="fas fa-user"></i>Login</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i>Logout</a>
+            </div>
           </li>
             
         </ul>

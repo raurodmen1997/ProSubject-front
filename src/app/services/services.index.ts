@@ -1,3 +1,5 @@
+export { LoginService } from './login/login.service';
+
 export { FacultadService } from './facultad/facultad.service';
 
 export { AsignaturaService } from './asignatura/asignatura.service';
@@ -13,6 +15,7 @@ export { BusquedaAsignaturaService } from './busqueda-asignatura/busqueda-asigna
 export { ProfesorService } from './profesor/profesor.service';
 
 export { HeaderService } from './shared/header.service';
+
 
 
 
