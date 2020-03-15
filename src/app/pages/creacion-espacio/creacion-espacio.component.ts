@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { BusquedaAsignaturaService } from 'src/app/services/busqueda-asignatura/busqueda-asignatura.service';
 import { GradoService, CursoService, AsignaturaService, FacultadService, EspacioService, ProfesorService } from 'src/app/services/services.index';
-
+import { validarHoras } from "./hour-validation";
 
 @Component({
   selector: 'app-creacion-espacio',
@@ -79,7 +79,7 @@ export class CreacionEspacioComponent implements OnInit {
           dia: new FormControl('', Validators.required),
           fechaInicio: new FormControl('', [Validators.required, Validators.pattern('^([01]?[0-9]|2[0-3]):[0-5][0-9]$')]),
           fechaFin: new FormControl('', [Validators.required, Validators.pattern('^([01]?[0-9]|2[0-3]):[0-5][0-9]$')])
-        })
+        }, {validators: validarHoras})
       ])
     })
 
@@ -135,7 +135,7 @@ export class CreacionEspacioComponent implements OnInit {
       dia: new FormControl(''),
       fechaInicio: new FormControl('', Validators.pattern('^([01]?[0-9]|2[0-3]):[0-5][0-9]$')),
       fechaFin: new FormControl('', Validators.pattern('^([01]?[0-9]|2[0-3]):[0-5][0-9]$'))
-    }))
+    }, {validators: validarHoras}))
   }
 
   convertirFecha(){
@@ -176,6 +176,7 @@ export class CreacionEspacioComponent implements OnInit {
   }
 
   submit(){
+    console.log('entro aqui')
     this.convertirFecha()
     
     this.crearEspacio();

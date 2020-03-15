@@ -106,9 +106,14 @@
                                         <input type="text" formControlName="fechaFin">
                                     </div>
                                 </div>
+                                <div class="col-md-12 ml-3">
+                                    <div *ngIf="form.get('horarios').controls[i].touched && form.get('horarios').controls[i].hasError('noValidHour')">
+                                        La fecha de fin debe ser mayor que la fecha de inicio
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <button (click)="addNuevoHorario()"><i class="fas fa-plus"></i></button>
+                        <button type="button" (click)="addNuevoHorario()"><i class="fas fa-plus"></i></button>
                     </div>
                 </div>
 
