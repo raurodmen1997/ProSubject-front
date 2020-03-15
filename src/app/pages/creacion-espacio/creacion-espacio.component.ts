@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { BusquedaAsignaturaService } from 'src/app/services/busqueda-asignatura/busqueda-asignatura.service';
-import { GradoService, CursoService, AsignaturaService, FacultadService, EspacioService } from 'src/app/services/services.index';
+import { GradoService, CursoService, AsignaturaService, FacultadService, EspacioService, ProfesorService } from 'src/app/services/services.index';
 
 
 @Component({
@@ -19,7 +19,17 @@ export class CreacionEspacioComponent implements OnInit {
   cursos: any[];
   asignaturas: any[];
 
-  diasSemana: any[] = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes']
+  espacio: any = {
+    alumnos: [],
+    asignatura:{},
+    foro:{},
+    profesor:{},
+    precio:'',
+    capacidad :'',
+    horarios:[]
+  }
+
+  diasSemana: any[] = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', "Sabado", "Domingo"]
 
   constructor(private fb: FormBuilder,
     private busquedaAsignaturaService: BusquedaAsignaturaService,
@@ -27,7 +37,8 @@ export class CreacionEspacioComponent implements OnInit {
     private gradoService: GradoService,
     private cursoService: CursoService,
     private asignaturaService: AsignaturaService,
-    private espacioService: EspacioService) { }
+    private espacioService: EspacioService,
+    private profesorService: ProfesorService) { }
 
   ngOnInit() {
 
@@ -55,14 +66,14 @@ export class CreacionEspacioComponent implements OnInit {
 
       profesor: new FormControl('1'),
 
-      precio: new FormControl('', [Validators.required, Validators.min(0)]),
-      capacidad: new FormControl('', [Validators.required, Validators.min(1)]),
+      precio: new FormControl('', [Validators.required, Validators.min(0), Validators.pattern('^[0-9]{1,}(\\.[0-9]{1,2})?$')]),
+      capacidad: new FormControl('', [Validators.required, Validators.min(1), Validators.pattern("^[0-9]+$")]),
       
       horarios: this.fb.array([
         this.fb.group({
-          dia: new FormControl(''),
-          fechaInicio: new FormControl(''),
-          fechaFin: new FormControl('')
+          dia: new FormControl('', Validators.required),
+          fechaInicio: new FormControl('', [Validators.required, Validators.pattern('^([01]?[0-9]|2[0-3]):[0-5][0-9]$')]),
+          fechaFin: new FormControl('', [Validators.required, Validators.pattern('^([01]?[0-9]|2[0-3]):[0-5][0-9]$')])
         })
       ])
     })
@@ -83,7 +94,6 @@ export class CreacionEspacioComponent implements OnInit {
     });
 
     //CAMBIO EN EL SELECT DE FACULTAD
-
     this.form.get('facultades').valueChanges.subscribe(data=>{
 
       if(data !== ''){
@@ -121,8 +131,8 @@ export class CreacionEspacioComponent implements OnInit {
   addNuevoHorario(){
     this.horarios.push(this.fb.group({
       dia: new FormControl(''),
-      fechaInicio: new FormControl(''),
-      fechaFin: new FormControl('')
+      fechaInicio: new FormControl('', Validators.pattern('^([01]?[0-9]|2[0-3]):[0-5][0-9]$')),
+      fechaFin: new FormControl('', Validators.pattern('^([01]?[0-9]|2[0-3]):[0-5][0-9]$'))
     }))
   }
 
@@ -139,11 +149,32 @@ export class CreacionEspacioComponent implements OnInit {
     });
   }
 
-  submit(){
-    this.convertirFecha()
-  
-    console.log(this.form.value)
+  crearEspacio(){
+    this.asignaturaService.getAsignaturaPorId(this.form.get('asignatura').value).subscribe(
+      res => this.espacio.asignatura = res,
+      error => console.log(error)
+    )
 
+    this.profesorService.getProfesorPorId(this.form.get('profesor').value).subscribe(
+      res => this.espacio.profesor = res,
+      error => console.log(error)
+    )
+
+    this.espacio.capacidad = this.form.get('capacidad').value;
+    this.espacio.precio = this.form.get('precio').value;
+    
+    console.log(this.espacio)
+  }
+
+  submit(){
+    //this.convertirFecha()
+    
+    this.crearEspacio();
+
+    this.espacioService.guardarEspacio(this.espacio).subscribe(
+      res => console.log('Todo ok'),
+      error => console.log(error)
+    )
   }
 
 }

@@ -24,4 +24,11 @@ export class AsignaturaService {
       map(response => response as any[])
     );
   }
+
+  getAsignaturaPorId(id: Number){
+    let url:string = `${this.urlEndPoint}/${id}`;
+    return this.http.get(url).pipe(
+      map(response => response as any)
+    )
+  }
 }

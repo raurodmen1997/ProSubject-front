@@ -10,6 +10,7 @@ import {
     AsignaturaService,
     FacultadService
  } from './services.index';
+import { ProfesorService } from './profesor/profesor.service';
 
 
 
@@ -24,7 +25,8 @@ import {
     EspacioService,
     CursoService,
     AsignaturaService,
-    FacultadService
+    FacultadService,
+    ProfesorService
   ],
   declarations: []
 })

@@ -10,6 +10,8 @@ export { GradoService } from './grado/grado.service';
 
 export { BusquedaAsignaturaService } from './busqueda-asignatura/busqueda-asignatura.service';
 
+export { ProfesorService } from './profesor/profesor.service';
+
 export { HeaderService } from './shared/header.service';
 
 
