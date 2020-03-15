@@ -26,7 +26,8 @@ export class CreacionEspacioComponent implements OnInit {
     private facultadService: FacultadService,
     private gradoService: GradoService,
     private cursoService: CursoService,
-    private asignaturaService: AsignaturaService) { }
+    private asignaturaService: AsignaturaService,
+    private espacioService: EspacioService) { }
 
   ngOnInit() {
 
@@ -51,14 +52,17 @@ export class CreacionEspacioComponent implements OnInit {
       grado: new FormControl('', Validators.required),
       curso: new FormControl('', Validators.required),
       asignatura: new FormControl('', Validators.required),
+
+      profesor: new FormControl('1'),
+
       precio: new FormControl('', [Validators.required, Validators.min(0)]),
       capacidad: new FormControl('', [Validators.required, Validators.min(1)]),
       
-      horario: this.fb.array([
+      horarios: this.fb.array([
         this.fb.group({
           dia: new FormControl(''),
-          horaInicio: new FormControl(''),
-          horaFin: new FormControl('')
+          fechaInicio: new FormControl(''),
+          fechaFin: new FormControl('')
         })
       ])
     })
@@ -111,19 +115,35 @@ export class CreacionEspacioComponent implements OnInit {
   }
 
   get horarios(){
-    return this.form.get('horario') as FormArray;
+    return this.form.get('horarios') as FormArray;
   }
 
   addNuevoHorario(){
     this.horarios.push(this.fb.group({
       dia: new FormControl(''),
-      horaInicio: new FormControl(''),
-      horaFin: new FormControl('')
+      fechaInicio: new FormControl(''),
+      fechaFin: new FormControl('')
     }))
   }
 
+  convertirFecha(){
+    const horario = this.form.get('horarios').value;
+
+    horario.forEach(element => {
+      const horaInicio = element.fechaInicio.split(':');
+      const horaFin = element.fechaFin.split(':');
+      
+      element.fechaInicio = new Date(2050,0,0,parseInt(horaInicio[0]), parseInt(horaInicio[1])).toISOString()
+      element.fechaFin = new Date(2050,0,0, parseInt(horaFin[0]), parseInt(horaFin[1])).toISOString()
+
+    });
+  }
+
   submit(){
+    this.convertirFecha()
+  
     console.log(this.form.value)
+
   }
 
 }

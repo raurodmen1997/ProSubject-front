@@ -42,7 +42,7 @@
                             <label>Asignatura</label>
                             <select class="form-control" formControlName="asignatura">
                                 <option>------</option>
-                                <option *ngFor="let valor of asignaturas" [value]="valor.nombre">{{valor.nombre}}</option>
+                                <option *ngFor="let valor of asignaturas" [value]="valor.id">{{valor.nombre}}</option>
                             </select>
                         </div>
         
@@ -75,7 +75,7 @@
                     <div class="col-md-5" >
                         HORARIO
                         <hr>
-                        <div formArrayName="horario" *ngFor="let hor of form.get('horario').controls; let i=index;">
+                        <div formArrayName="horarios" *ngFor="let hor of form.get('horarios').controls; let i=index;">
                             <div class="row" [formGroupName]="i">
 
                                 <div class="form-group col-md-4">
@@ -89,8 +89,7 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Hora inicio</label>
-                                        <input [ngxTimepicker]="fechaInicio" formControlName="horaInicio">
-                                        <ngx-material-timepicker #fechaInicio></ngx-material-timepicker>
+                                        <input type="text" formControlName="fechaInicio">
                                     </div>
                                 </div>
 
@@ -98,8 +97,7 @@
                                 <div class="ml-3 col-md-3">
                                     <div class="form-group">
                                         <label>Hora fin</label>
-                                        <input [ngxTimepicker]="fechaFin" formControlName="horaFin">
-                                        <ngx-material-timepicker #fechaFin></ngx-material-timepicker>
+                                        <input type="text" formControlName="fechaFin">
                                     </div>
                                 </div>
                             </div>

@@ -32,4 +32,9 @@ export class EspacioService {
       map(response => response as any)
     )
   }
+
+  guardarEspacio(espacio: any){
+    return this.http.post(this.urlEndPoint, espacio);
+  }
+
 }
