@@ -178,6 +178,11 @@ export class CreacionEspacioComponent implements OnInit {
               this.horario.fechaFin = element.fechaFin;
               
               this.espacio.horarios.push(this.horario)
+              this.horario = { 
+                dia:'',
+                fechaInicio:'',
+                fechaFin:''
+              }
               
             })
             this.espacio.capacidad = this.form.get('capacidad').value;

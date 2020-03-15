@@ -4,6 +4,10 @@ export function validarHoras(control: AbstractControl): {[key: string]: boolean}
     const fechaInicio = control.get('fechaInicio').value.split(':');
     const fechaFin = control.get('fechaFin').value.split(':');
 
+    if(fechaFin[0] == '00'){
+        fechaFin[0] = 24;
+    }
+
     const horaIni = new Date(2050,0,0,parseInt(fechaInicio[0]), parseInt(fechaInicio[1]))
     const horaFin = new Date(2050,0,0,parseInt(fechaFin[0]), parseInt(fechaFin[1]))
 
