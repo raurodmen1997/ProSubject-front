@@ -7,6 +7,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class EspacioService {
+
   private urlEndPoint: string = 'http://localhost:8080/api/espacios';
   private httpHeaders = new HttpHeaders({
     'Content-Type': 'application/json'

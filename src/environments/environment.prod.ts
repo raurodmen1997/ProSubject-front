@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  domain_backend: 'https://prosubject-backend.herokuapp.com'
 };
