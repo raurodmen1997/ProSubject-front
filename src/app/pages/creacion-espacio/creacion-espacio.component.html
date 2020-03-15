@@ -111,7 +111,12 @@
                                         La fecha de fin debe ser mayor que la fecha de inicio
                                     </div>
                                 </div>
+
                             </div>
+                            <div *ngIf="i != 0">
+                            <button type="button" (click)="deleteHorario(i)"><i class="fas fa-trash-alt"></i></button>
+                            </div>
+
                         </div>
                         <button type="button" (click)="addNuevoHorario()"><i class="fas fa-plus"></i></button>
                     </div>

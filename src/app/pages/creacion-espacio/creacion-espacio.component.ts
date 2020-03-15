@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, FormControl, Validators, FormArray } from '@ang
 import { BusquedaAsignaturaService } from 'src/app/services/busqueda-asignatura/busqueda-asignatura.service';
 import { GradoService, CursoService, AsignaturaService, FacultadService, EspacioService, ProfesorService } from 'src/app/services/services.index';
 import { validarHoras } from "./hour-validation";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-creacion-espacio',
@@ -29,6 +30,9 @@ export class CreacionEspacioComponent implements OnInit {
     horarios:[]
   }
 
+  asignatura: any = {}
+  profesor: any = {}
+
   horario:any = { 
     dia:'',
     fechaInicio:'',
@@ -44,7 +48,8 @@ export class CreacionEspacioComponent implements OnInit {
     private cursoService: CursoService,
     private asignaturaService: AsignaturaService,
     private espacioService: EspacioService,
-    private profesorService: ProfesorService) { }
+    private profesorService: ProfesorService,
+    private router: Router) { }
 
   ngOnInit() {
 
@@ -133,9 +138,13 @@ export class CreacionEspacioComponent implements OnInit {
   addNuevoHorario(){
     this.horarios.push(this.fb.group({
       dia: new FormControl(''),
-      fechaInicio: new FormControl('', Validators.pattern('^([01]?[0-9]|2[0-3]):[0-5][0-9]$')),
-      fechaFin: new FormControl('', Validators.pattern('^([01]?[0-9]|2[0-3]):[0-5][0-9]$'))
+      fechaInicio: new FormControl('', [Validators.required, Validators.pattern('^([01]?[0-9]|2[0-3]):[0-5][0-9]$')]),
+      fechaFin: new FormControl('', [Validators.required, Validators.pattern('^([01]?[0-9]|2[0-3]):[0-5][0-9]$')])
     }, {validators: validarHoras}))
+  }
+
+  deleteHorario(index){
+    (<FormArray>this.form.get('horarios')).removeAt(index);
   }
 
   convertirFecha(){
@@ -151,39 +160,45 @@ export class CreacionEspacioComponent implements OnInit {
     });
   }
 
-  crearEspacio(){
-    this.asignaturaService.getAsignaturaPorId(this.form.get('asignatura').value).subscribe(
-      res => this.espacio.asignatura = res,
-      error => console.log(error)
-    )
-
-    this.profesorService.getProfesorPorId(this.form.get('profesor').value).subscribe(
-      res => this.espacio.profesor = res,
-      error => console.log(error)
-    )
-
-    this.form.get('horarios').value.forEach(element =>{
-      this.horario.dia = element.dia;
-      this.horario.fechaInicio = element.fechaInicio;
-      this.horario.fechaFin = element.fechaFin;
-      
-      this.espacio.horarios.push(this.horario)
-      
-    })
-
-    this.espacio.capacidad = this.form.get('capacidad').value;
-    this.espacio.precio = this.form.get('precio').value;
-  }
 
   submit(){
-    console.log('entro aqui')
-    this.convertirFecha()
-    
-    this.crearEspacio();
 
-    this.espacioService.guardarEspacio(this.espacio).subscribe(
-      res => console.log('Todo ok'),
-      error => console.log(error)
+    this.asignaturaService.getAsignaturaPorId(this.form.get('asignatura').value).subscribe(
+      res => {
+        console.log(res)
+        this.asignatura = res;
+        this.profesorService.getProfesorPorId(this.form.get('profesor').value).subscribe(
+          res => {
+            this.profesor = res,
+
+            this.convertirFecha()
+            this.form.get('horarios').value.forEach(element =>{
+              this.horario.dia = element.dia;
+              this.horario.fechaInicio = element.fechaInicio;
+              this.horario.fechaFin = element.fechaFin;
+              
+              this.espacio.horarios.push(this.horario)
+              
+            })
+            this.espacio.capacidad = this.form.get('capacidad').value;
+            this.espacio.precio = this.form.get('precio').value;
+            this.espacio.asignatura = this.asignatura;
+            this.espacio.profesor = this.profesor;
+
+            console.log(this.espacio)
+
+            this.espacioService.guardarEspacio(this.espacio).subscribe(
+              res => {
+                console.log('Todo ok')
+            },
+              error => console.log(error)
+            )
+          },
+          error => console.log(error)
+        )
+      },
+      error => console.log(error),
+
     )
   }
 

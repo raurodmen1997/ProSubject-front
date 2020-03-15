@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -8,6 +8,9 @@ import { map } from 'rxjs/operators';
 })
 export class EspacioService {
   private urlEndPoint: string = 'http://localhost:8080/api/espacios';
+  private httpHeaders = new HttpHeaders({
+    'Content-Type': 'application/json'
+  });
 
   //Inyección de dependencia
   constructor(private http: HttpClient) { }
@@ -34,7 +37,10 @@ export class EspacioService {
   }
 
   guardarEspacio(espacio: any){
-    return this.http.post(this.urlEndPoint, espacio);
+
+    return this.http.post(this.urlEndPoint, espacio, {headers: this.httpHeaders}).pipe(
+      res => {return res}
+    );
   }
 
 }
