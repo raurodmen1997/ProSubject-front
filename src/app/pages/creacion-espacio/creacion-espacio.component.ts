@@ -59,7 +59,6 @@ export class CreacionEspacioComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-
     this.inicializarFormulario();
 
     this.busquedaAsignaturaService.getUniversidades().subscribe(data=>{
@@ -162,8 +161,8 @@ export class CreacionEspacioComponent implements OnInit {
       const horaInicio = element.fechaInicio.split(':');
       const horaFin = element.fechaFin.split(':');
       
-      element.fechaInicio = new Date(2050,0,0,parseInt(horaInicio[0]), parseInt(horaInicio[1])).toISOString()
-      element.fechaFin = new Date(2050,0,0, parseInt(horaFin[0]), parseInt(horaFin[1])).toISOString()
+      element.fechaInicio = new Date(2050,0,0,parseInt(horaInicio[0])+1, parseInt(horaInicio[1])).toISOString()
+      element.fechaFin = new Date(2050,0,0, parseInt(horaFin[0])+1, parseInt(horaFin[1])).toISOString()
 
     });
   }
