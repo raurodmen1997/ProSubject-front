@@ -4,6 +4,7 @@ import { BusquedaAsignaturaService } from 'src/app/services/busqueda-asignatura/
 import { GradoService, CursoService, AsignaturaService, FacultadService, EspacioService, ProfesorService } from 'src/app/services/services.index';
 import { validarHoras } from "./hour-validation";
 import { Router } from "@angular/router";
+import { HorarioService } from 'src/app/services/horario/horario.service';
 
 @Component({
   selector: 'app-creacion-espacio',
@@ -20,24 +21,30 @@ export class CreacionEspacioComponent implements OnInit {
   cursos: any[];
   asignaturas: any[];
 
+  //---Creación de espacio---
   espacio: any = {
     alumnos: [],
     asignatura:{},
     foro:{},
     profesor:{},
-    precio:'',
-    capacidad :'',
-    horarios:[]
+    precio:''
   }
-
   asignatura: any = {}
   profesor: any = {}
+  //---Creación de espacio---
 
+
+  //---Creación de horarios---
+  json: any[] = []
   horario:any = { 
     dia:'',
     fechaInicio:'',
-    fechaFin:''
+    fechaFin:'',
+    espacio:'',
+    capacidad:''
+    
   }
+  //---Creación de horarios---
 
   diasSemana: any[] = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', "Sabado", "Domingo"]
 
@@ -47,7 +54,7 @@ export class CreacionEspacioComponent implements OnInit {
     private gradoService: GradoService,
     private cursoService: CursoService,
     private asignaturaService: AsignaturaService,
-    private espacioService: EspacioService,
+    private horarioService: HorarioService,
     private profesorService: ProfesorService,
     private router: Router) { }
 
@@ -78,12 +85,12 @@ export class CreacionEspacioComponent implements OnInit {
       profesor: new FormControl('1'),
 
       precio: new FormControl('', [Validators.required, Validators.min(0), Validators.pattern('^[0-9]{1,}(\\.[0-9]{1,2})?$')]),
-      capacidad: new FormControl('', [Validators.required, Validators.min(1), Validators.pattern("^[0-9]+$")]),      
       horarios: this.fb.array([
         this.fb.group({
           dia: new FormControl('', Validators.required),
           fechaInicio: new FormControl('', [Validators.required, Validators.pattern('^([01]?[0-9]|2[0-3]):[0-5][0-9]$')]),
-          fechaFin: new FormControl('', [Validators.required, Validators.pattern('^([01]?[0-9]|2[0-3]):[0-5][0-9]$')])
+          fechaFin: new FormControl('', [Validators.required, Validators.pattern('^([01]?[0-9]|2[0-3]):[0-5][0-9]$')]),
+          capacidad: new FormControl('', [Validators.required, Validators.min(1), Validators.pattern("^[0-9]+$")]),      
         }, {validators: validarHoras})
       ])
     })
@@ -139,7 +146,8 @@ export class CreacionEspacioComponent implements OnInit {
     this.horarios.push(this.fb.group({
       dia: new FormControl('', Validators.required),
       fechaInicio: new FormControl('', [Validators.required, Validators.pattern('^([01]?[0-9]|2[0-3]):[0-5][0-9]$')]),
-      fechaFin: new FormControl('', [Validators.required, Validators.pattern('^([01]?[0-9]|2[0-3]):[0-5][0-9]$')])
+      fechaFin: new FormControl('', [Validators.required, Validators.pattern('^([01]?[0-9]|2[0-3]):[0-5][0-9]$')]),
+      capacidad: new FormControl('', [Validators.required, Validators.min(1), Validators.pattern("^[0-9]+$")])
     }, {validators: validarHoras}))
   }
 
@@ -169,32 +177,33 @@ export class CreacionEspacioComponent implements OnInit {
         this.profesorService.getProfesorPorId(this.form.get('profesor').value).subscribe(
           res => {
             this.profesor = res,
+            this.espacio.precio = this.form.get('precio').value;
+            this.espacio.asignatura = this.asignatura;
+            this.espacio.profesor = this.profesor;
 
             this.convertirFecha()
             this.form.get('horarios').value.forEach(element =>{
               this.horario.dia = element.dia;
               this.horario.fechaInicio = element.fechaInicio;
               this.horario.fechaFin = element.fechaFin;
+              this.horario.espacio = this.espacio;
+              this.horario.capacidad = element.capacidad;
               
-              this.espacio.horarios.push(this.horario)
+              this.json.push(this.horario)
               this.horario = { 
                 dia:'',
                 fechaInicio:'',
-                fechaFin:''
+                fechaFin:'',
+                espacio: '',
+                capacidad:''
               }
               
             })
-            this.espacio.capacidad = this.form.get('capacidad').value;
-            this.espacio.precio = this.form.get('precio').value;
-            this.espacio.asignatura = this.asignatura;
-            this.espacio.profesor = this.profesor;
 
-            console.log(this.espacio)
-
-            this.espacioService.guardarEspacio(this.espacio).subscribe(
+            this.horarioService.guardarHorario(this.json).subscribe(
               res => {
-                console.log('Todo ok')
-                this.router.navigate(['espacios-profesor'])              
+                console.log(this.json)
+                //this.router.navigate(['espacios-profesor'])              
               },
               error => console.log(error)
             )

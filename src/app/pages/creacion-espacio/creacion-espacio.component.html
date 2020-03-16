@@ -75,21 +75,7 @@
                                 Introduce un precio válido
                             </div>
                         </div>
-        
-                        <div class="form-group">
-                            <label>Capacidad</label>
-                            <input matInput type="text" name="capacidad" formControlName="capacidad" 
-                            placeholder="Introduce la capacidad..." class="form-control">
-                            <div *ngIf="form.get('capacidad').touched && form.get('capacidad').hasError('required')">
-                                La capacidad es requerida
-                            </div>
-                            <div *ngIf="form.get('capacidad').touched && form.get('capacidad').hasError('min')">
-                                La capacidad debe ser mayor que 0
-                            </div>
-                            <div *ngIf="form.get('capacidad').touched && form.get('capacidad').hasError('pattern')">
-                                Introduce una capacidad válida
-                            </div>
-                        </div>
+
                         
                     </div>
 
@@ -99,7 +85,7 @@
                         <div formArrayName="horarios" *ngFor="let hor of form.get('horarios').controls; let i=index;">
                             <div class="row" [formGroupName]="i">
 
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-3">
                                     <label>Día</label>
                                     <select class="form-control" formControlName="dia">
                                         <option value="">------</option>
@@ -117,13 +103,23 @@
                                 </div>
 
 
-                                <div class="ml-3 col-md-3">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Hora fin</label>
                                         <input type="text" formControlName="fechaFin" class="form-control" name="fechaFin">
                                         
                                     </div>
                                 </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Capacidad</label>
+                                        <input matInput type="text" name="capacidad" formControlName="capacidad" 
+                                        class="form-control">
+                                        
+                                    </div>
+                                </div>
+
                                 <div class="col-md-12 ml-3">
                                     <!--VALIDACION REQUIRED-->
                                     <div *ngIf="form.get('horarios').controls[i].get('dia').touched && form.get('horarios').controls[i].get('dia').hasError('required')">
@@ -138,6 +134,10 @@
                                         La fecha de fin es requerida
                                     </div>
 
+                                    <div *ngIf="form.get('horarios').controls[i].get('capacidad').touched && form.get('horarios').controls[i].get('capacidad').hasError('required')">
+                                        La capacidad es requerida
+                                    </div>
+
                                     <!--VALIDACION PATTERN-->
                                     <div *ngIf="form.get('horarios').controls[i].get('fechaInicio').touched && form.get('horarios').controls[i].get('fechaInicio').hasError('pattern')">
                                         Introduce una hora de inicio valida
@@ -145,6 +145,14 @@
                                     
                                     <div *ngIf="form.get('horarios').controls[i].get('fechaFin').touched && form.get('horarios').controls[i].get('fechaFin').hasError('pattern')">
                                         Introduce una hora de fin valida
+                                    </div>
+
+                                    <div *ngIf="form.get('horarios').controls[i].get('capacidad').touched && form.get('horarios').controls[i].get('capacidad').hasError('pattern')">
+                                        Introduce una capacidad válida
+                                    </div>
+
+                                    <div *ngIf="form.get('horarios').controls[i].get('capacidad').touched && form.get('horarios').controls[i].get('capacidad').hasError('min')">
+                                        La capacidad debe ser mayor que 0
                                     </div>
 
                                     <!--VALIDACION HORA INICIO < HORA FIN-->
