@@ -20,19 +20,19 @@ export class BreadcrumbsComponent implements OnInit {
       if(JSON.parse(localStorage.getItem('usuario')) && JSON.parse(localStorage.getItem('usuario')).userAccount.autoridad === 'ALUMNO'){
         this.breadcrumbsService.menu = [
           { titulo: 'Login', url: '/login' },
-          { titulo: 'Espacios', url: '/busqueda-asignatura' },
-          { titulo: 'Mis espacios', url: '/espacios-alumno'},
+          { titulo: 'Busqueda de espacios', url: '/busqueda-asignatura' },
+          { titulo: 'Mis clases', url: '/espacios-alumno'},
         ];
       }else if(JSON.parse(localStorage.getItem('usuario')) && JSON.parse(localStorage.getItem('usuario')).userAccount.autoridad === 'PROFESOR'){
         this.breadcrumbsService.menu = [
           { titulo: 'Login', url: '/login' },
-          { titulo: 'Creación de clase', url: '/creacion-espacio'},
-          { titulo: 'Mis clases', url: '/espacios-profesor'},
+          { titulo: 'Creación de espacio', url: '/creacion-espacio'},
+          { titulo: 'Mis espacios', url: '/espacios-profesor'},
         ];
       }else{
         this.breadcrumbsService.menu = [
           { titulo: 'Login', url: '/login' },
-          { titulo: 'Espacios', url: '/busqueda-asignatura' },
+          { titulo: 'Busqueda de espacios', url: '/busqueda-asignatura' },
         ];
       }
 

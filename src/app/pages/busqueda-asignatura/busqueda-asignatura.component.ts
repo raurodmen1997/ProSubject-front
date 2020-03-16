@@ -108,6 +108,16 @@ export class BusquedaAsignaturaComponent implements OnInit {
     });
 
 
+
+    //ESPERO CAMBIOS EN EL SELECT DE GRADOS
+    this.form.get('grado').valueChanges.subscribe(data=>{
+
+     this.form.get('curso').setValue('');
+
+
+    });
+
+
      //ESPERO CAMBIOS EN EL SELECT DE CURSO
      this.form.get('curso').valueChanges.subscribe(data=>{
 

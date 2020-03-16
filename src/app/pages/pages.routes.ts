@@ -21,16 +21,16 @@ const pagesRoutes: Routes = [
         path: '',
         component: PagesComponent,
         children: [
-            { path: 'busqueda-asignatura', component: BusquedaAsignaturaComponent, data:{titulo:'Busqueda de asignatura'} },
+            { path: 'busqueda-asignatura', component: BusquedaAsignaturaComponent, data:{titulo:'Busqueda de espacios'} },
             { path: 'inicio', component: HomeComponent, data:{titulo:'Inicio'} },
             { path:'login', component:LoginComponent, data:{titulo:'Inicio sesión'}},
 
 
             //----CRISTIAN----
             {path:'creacion-espacio', component: CreacionEspacioComponent, data:{titulo:'Creacion de espacio'}, canActivate: [ProfesorGuard]},
-            {path:'detalles-espacio/:id', component: DetallesEspacioComponent, data:{titulo: 'Detalles de espacio'}},
-            {path:'espacios-profesor', component: EspaciosProfesorComponent, data:{titulo: 'Espacios profesor'}},
-            {path:'espacios-alumno', component: EspaciosAlumnoComponent, data:{titulo: 'Espacios alumno'}},
+            {path:'detalles-espacio/:id', component: DetallesEspacioComponent, data:{titulo: 'Detalle del espacio'}},
+            {path:'espacios-profesor', component: EspaciosProfesorComponent, data:{titulo: 'Mis espacios'}},
+            {path:'espacios-alumno', component: EspaciosAlumnoComponent, data:{titulo: 'Mis clases'}},
             {path:'horarios/:id', component: HorariosComponent, data: {titulo: 'Horarios'}},
             { path: '', redirectTo: '/inicio', pathMatch: 'full' }
         ]
