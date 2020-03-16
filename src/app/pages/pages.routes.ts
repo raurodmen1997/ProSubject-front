@@ -8,6 +8,7 @@ import { CreacionEspacioComponent } from './creacion-espacio/creacion-espacio.co
 import { DetallesEspacioComponent } from './busqueda-asignatura/detalles-espacio/detalles-espacio.component';
 import { EspaciosProfesorComponent } from './espacios-profesor/espacios-profesor.component';
 import { EspaciosAlumnoComponent } from './espacios-alumno/espacios-alumno.component';
+import { HorariosComponent } from './horarios/horarios.component';
 
 
 import { ProfesorGuard, AlumnoGuard } from '../services/services.index';
@@ -28,8 +29,9 @@ const pagesRoutes: Routes = [
             //----CRISTIAN----
             {path:'creacion-espacio', component: CreacionEspacioComponent, data:{titulo:'Creacion de espacio'}, canActivate: [ProfesorGuard]},
             {path:'detalles-espacio/:id', component: DetallesEspacioComponent, data:{titulo: 'Detalles de espacio'}},
-            {path:'espacios-profesor', component: EspaciosProfesorComponent, data:{titulo: 'Espacios profesor'}, canActivate: [ProfesorGuard]},
-            {path:'espacios-alumno', component: EspaciosAlumnoComponent, data:{titulo: 'Espacios alumno'}, canActivate: [AlumnoGuard]},
+            {path:'espacios-profesor', component: EspaciosProfesorComponent, data:{titulo: 'Espacios profesor'}},
+            {path:'espacios-alumno', component: EspaciosAlumnoComponent, data:{titulo: 'Espacios alumno'}},
+            {path:'horarios/:id', component: HorariosComponent, data: {titulo: 'Horarios'}},
             { path: '', redirectTo: '/inicio', pathMatch: 'full' }
         ]
     }

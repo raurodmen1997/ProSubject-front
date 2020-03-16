@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-md-8 mx-auto d-block">
+        <div class="card text-center">
+            <div class="card-header bg-dark text-white h5 f-flex justify-content-between align-items-center">
+                <strong>Horario</strong>
+            </div>     
+            <div class="card-body text-dark h6" id="parentCard">
+                <div class="container mt-4">
+
+                    <div class="row">
+                        
+                        <div class="col-md-6" *ngFor="let horario of horarios">
+                            <div class="card rounded" id="childCard">
+                                <div class="h4">Horario:</div> {{horario.dia}}<br/>
+                                <div class="h4">De:</div> {{horario.fechaInicio}}<br/>
+                                <div class="h4">A:</div>  {{horario.fechaFin}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button (click)="volverDetallesEspacio(espacioId)" class="btn btn-primary mr-1">Cancelar</button>
+            </div>
+            
+        </div>
+    </div>
+</div>
