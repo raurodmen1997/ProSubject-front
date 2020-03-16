@@ -22,13 +22,23 @@ export class HorariosComponent implements OnInit {
       this.espacioId = parseInt(paramas.get('id'), 10);
       if(paramas.has('id')){
           this.horarioService.getHorariosDeEspacio(this.espacioId).subscribe(
-            res => {this.horarios = res;
-            console.log(this.horarios)
+            res => {
+              this.horarios = res
+            this.formatearFecha()
           }
-          )
+        )
       }
-
     });
+  }
+
+  formatearFecha(){
+    this.horarios.forEach(element => {
+      let horaInicio = element.fechaInicio.split(':');
+      element.fechaInicio = horaInicio[0]+':'+horaInicio[1]
+
+      let horaFin = element.fechaFin.split(':');
+      element.fechaFin = horaFin[0]+':'+horaFin[1]
+    })
   }
 
   volverDetallesEspacio(id){
