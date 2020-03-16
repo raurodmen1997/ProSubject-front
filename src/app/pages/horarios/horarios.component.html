@@ -8,12 +8,13 @@
                 <div class="container mt-4">
 
                     <div class="row">
-                        
                         <div class="col-md-6" *ngFor="let horario of horarios">
                             <div class="card rounded" id="childCard">
-                                <div class="h4">Horario:</div> {{horario.dia}}<br/>
-                                <div class="h4">De:</div> {{horario.fechaInicio}}<br/>
-                                <div class="h4">A:</div>  {{horario.fechaFin}}
+                                <ul class="list-group">
+                                    <li class="h5 list-group-item active">{{horario.dia}}</li>
+                                    <li class="list-group-item"><strong>De:</strong> {{horario.fechaInicio}}</li>
+                                    <li class="list-group-item"><strong>A:</strong> {{horario.fechaFin}}</li>
+                                  </ul>
                             </div>
                         </div>
                     </div>
