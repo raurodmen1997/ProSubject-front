@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { HorarioService } from 'src/app/services/horario/horario.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -43,6 +43,20 @@ export class HorariosComponent implements OnInit {
 
   volverDetallesEspacio(id){
     this.router.navigate(['detalles-espacio', id])
+  }
+
+  inscribirse(horarioId:number){
+    
+    if(!localStorage.getItem('usuario')){
+      this.router.navigateByUrl('/login');
+    }else{
+      console.log(this.espacioId);
+      console.log(JSON.parse(localStorage.getItem('usuario')).id);
+      this.horarioService.insertarAlumno(horarioId,JSON.parse(localStorage.getItem('usuario')).id).subscribe(data=>{
+        console.log(data);
+        this.router.navigateByUrl('/espacios-alumno');
+      });
+    }
   }
 
 }

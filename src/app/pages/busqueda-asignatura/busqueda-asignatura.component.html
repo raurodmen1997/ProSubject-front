@@ -45,6 +45,7 @@
                     <div class="col-md-4 mb-4">
                         <label>Asignatura</label>
                         <select class="form-control" formControlName="asignatura">
+                            <option></option>
                             <option *ngFor="let valor of asignaturas" [value]="valor.nombre">{{valor.nombre}}</option>
                         </select>
                     </div>
@@ -71,5 +72,3 @@
     </div>
 
 </div>
-
-{{form.value|json}}
