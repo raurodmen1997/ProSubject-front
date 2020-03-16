@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
 import swal from 'sweetalert2';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -11,7 +12,7 @@ import swal from 'sweetalert2';
 })
 export class LoginService {
 
-  private urlEndPoint: string = 'http://localhost:8080/api/login';
+  private urlEndPoint: string = environment.domain_backend + '/api/login';
 
   usuarioLogueado:any;
 

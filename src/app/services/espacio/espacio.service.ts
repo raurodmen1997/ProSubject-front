@@ -6,13 +6,14 @@ import { Observable, throwError } from 'rxjs';
 
 import { map, catchError } from 'rxjs/operators';
 import swal from 'sweetalert2';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EspacioService {
 
-  private urlEndPoint: string = 'http://localhost:8080/api/espacios';
+  private urlEndPoint: string = environment.domain_backend + '/api/espacios';
   private httpHeaders = new HttpHeaders({
     'Content-Type': 'application/json'
   });

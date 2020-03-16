@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  domain_backend: 'https://prosubject-backend.herokuapp.com'
+  domain_backend: 'http://localhost:8080'
 };
 
 /*
