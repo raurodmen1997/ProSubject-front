@@ -57,7 +57,7 @@
                                 <option *ngFor="let valor of asignaturas" [value]="valor.id">{{valor.nombre}}</option>
                             </select>
                             <div *ngIf="form.get('asignatura').touched && form.get('asignatura').hasError('required')">
-                                Debes introducir un curso
+                                Debes introducir una asignatura
                             </div>
                         </div>
         

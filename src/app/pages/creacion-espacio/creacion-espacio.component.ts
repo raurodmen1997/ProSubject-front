@@ -23,7 +23,6 @@ export class CreacionEspacioComponent implements OnInit {
 
   //---Creación de espacio---
   espacio: any = {
-    alumnos: [],
     asignatura:{},
     foro:{},
     profesor:{},
@@ -41,8 +40,8 @@ export class CreacionEspacioComponent implements OnInit {
     fechaInicio:'',
     fechaFin:'',
     espacio:'',
-    capacidad:''
-    
+    capacidad:'',
+    alumnos: []
   }
   //---Creación de horarios---
 
@@ -194,11 +193,11 @@ export class CreacionEspacioComponent implements OnInit {
                 fechaInicio:'',
                 fechaFin:'',
                 espacio: '',
-                capacidad:''
+                capacidad:'',
+                alumnos: []
               }
               
             })
-
             this.horarioService.guardarHorario(this.json).subscribe(
               res => {
                 console.log(this.json)
