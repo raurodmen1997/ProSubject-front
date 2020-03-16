@@ -157,8 +157,13 @@ export class CreacionEspacioComponent implements OnInit {
       const horaInicio = element.fechaInicio.split(':');
       const horaFin = element.fechaFin.split(':');
       
+      let anyo=0;
+      if(horaFin[0] == '00'){
+        anyo = 1
+      }
+
       element.fechaInicio = new Date(2050,0,0,parseInt(horaInicio[0])+1, parseInt(horaInicio[1])).toISOString()
-      element.fechaFin = new Date(2050,0,0, parseInt(horaFin[0])+1, parseInt(horaFin[1])).toISOString()
+      element.fechaFin = new Date(2050+anyo,0,0, parseInt(horaFin[0])+1, parseInt(horaFin[1])).toISOString()
 
     });
   }
