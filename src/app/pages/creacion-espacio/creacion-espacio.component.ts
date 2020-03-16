@@ -79,9 +79,6 @@ export class CreacionEspacioComponent implements OnInit {
       grado: new FormControl('', Validators.required),
       curso: new FormControl('', Validators.required),
       asignatura: new FormControl('', Validators.required),
-
-      profesor: new FormControl('1'),
-
       precio: new FormControl('', [Validators.required, Validators.min(0), Validators.pattern('^[0-9]{1,}(\\.[0-9]{1,2})?$')]),
       horarios: this.fb.array([
         this.fb.group({
@@ -166,13 +163,19 @@ export class CreacionEspacioComponent implements OnInit {
     });
   }
 
+  getIdFromLocalStorage(){
+    const usuario = localStorage.getItem('usuario').split(',');
+    const id = usuario[0].split(':');
+    return parseInt(id[1]);
+  }
+
 
   submit(){
 
     this.asignaturaService.getAsignaturaPorId(this.form.get('asignatura').value).subscribe(
       res => {
         this.asignatura = res;
-        this.profesorService.getProfesorPorId(this.form.get('profesor').value).subscribe(
+        this.profesorService.getProfesorPorId(this.getIdFromLocalStorage()).subscribe(
           res => {
             this.profesor = res,
             this.espacio.precio = this.form.get('precio').value;
@@ -201,7 +204,7 @@ export class CreacionEspacioComponent implements OnInit {
             this.horarioService.guardarHorario(this.json).subscribe(
               res => {
                 console.log(this.json)
-                //this.router.navigate(['espacios-profesor'])              
+                this.router.navigate(['espacios-profesor'])              
               },
               error => console.log(error)
             )
