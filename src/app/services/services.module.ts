@@ -13,7 +13,8 @@ import {
     ProfesorGuard,
     AlumnoGuard,
     ProfesorService,
-    AdministradorGuard
+    AdministradorGuard,
+    BreadcrumbsService
  } from './services.index';
 
 
@@ -36,7 +37,8 @@ import {
     LoginService,
     ProfesorGuard,
     AlumnoGuard,
-    AdministradorGuard
+    AdministradorGuard,
+    BreadcrumbsService
   ],
   declarations: []
 })
