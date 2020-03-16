@@ -137,7 +137,7 @@ export class CreacionEspacioComponent implements OnInit {
 
   addNuevoHorario(){
     this.horarios.push(this.fb.group({
-      dia: new FormControl(''),
+      dia: new FormControl('', Validators.required),
       fechaInicio: new FormControl('', [Validators.required, Validators.pattern('^([01]?[0-9]|2[0-3]):[0-5][0-9]$')]),
       fechaFin: new FormControl('', [Validators.required, Validators.pattern('^([01]?[0-9]|2[0-3]):[0-5][0-9]$')])
     }, {validators: validarHoras}))
@@ -165,7 +165,6 @@ export class CreacionEspacioComponent implements OnInit {
 
     this.asignaturaService.getAsignaturaPorId(this.form.get('asignatura').value).subscribe(
       res => {
-        console.log(res)
         this.asignatura = res;
         this.profesorService.getProfesorPorId(this.form.get('profesor').value).subscribe(
           res => {
@@ -195,7 +194,8 @@ export class CreacionEspacioComponent implements OnInit {
             this.espacioService.guardarEspacio(this.espacio).subscribe(
               res => {
                 console.log('Todo ok')
-            },
+                this.router.navigate(['espacios-profesor'])              
+              },
               error => console.log(error)
             )
           },
