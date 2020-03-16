@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EspacioService } from "../../../services/espacio/espacio.service";
 import { Router, ActivatedRoute } from "@angular/router";
-import { HorarioService } from 'src/app/services/horario/horario.service';
 
 
 @Component({
@@ -17,12 +16,9 @@ export class DetallesEspacioComponent implements OnInit {
 
   logueado:boolean = false;
 
-  horarios: any = [];
-
   constructor(private espacioService: EspacioService,
     private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private horarioService: HorarioService) { }
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(paramas=>{
@@ -31,12 +27,6 @@ export class DetallesEspacioComponent implements OnInit {
         this.espacioService.getEspaciosPorId(parseInt(paramas.get('id'), 10)).subscribe(data=>{
           this.espacio = data;
           console.log(this.espacio);
-
-          this.horarioService.getHorariosDeEspacio(this.espacioId).subscribe(
-            res => {this.horarios = res;
-            console.log(this.horarios)
-          }
-          )
         });
       }
 
@@ -49,7 +39,11 @@ export class DetallesEspacioComponent implements OnInit {
     this.router.navigate(['busqueda-asignatura']);
   }
 
-  insertarAlumno(){
+  verHorarios(id){
+    this.router.navigate(['horarios', id])
+  }
+
+  /*insertarAlumno(){
 
     if(!localStorage.getItem('usuario')){
       this.router.navigateByUrl('/login');
@@ -61,6 +55,6 @@ export class DetallesEspacioComponent implements OnInit {
         this.router.navigateByUrl('/espacios-alumno');
       });
     }
-  }
+  }*/
 
 }
