@@ -10,6 +10,9 @@ import { EspaciosProfesorComponent } from './espacios-profesor/espacios-profesor
 import { EspaciosAlumnoComponent } from './espacios-alumno/espacios-alumno.component';
 
 
+import { ProfesorGuard, AlumnoGuard } from '../services/services.index';
+
+
 
 
 const pagesRoutes: Routes = [
@@ -23,10 +26,10 @@ const pagesRoutes: Routes = [
 
 
             //----CRISTIAN----
-            {path:'creacion-espacio', component: CreacionEspacioComponent, data:{titulo:'Creacion de espacio'}},
+            {path:'creacion-espacio', component: CreacionEspacioComponent, data:{titulo:'Creacion de espacio'}, canActivate: [ProfesorGuard]},
             {path:'detalles-espacio/:id', component: DetallesEspacioComponent, data:{titulo: 'Detalles de espacio'}},
-            {path:'espacios-profesor', component: EspaciosProfesorComponent, data:{titulo: 'Espacios profesor'}},
-            {path:'espacios-alumno', component: EspaciosAlumnoComponent, data:{titulo: 'Espacios alumno'}},
+            {path:'espacios-profesor', component: EspaciosProfesorComponent, data:{titulo: 'Espacios profesor'}, canActivate: [ProfesorGuard]},
+            {path:'espacios-alumno', component: EspaciosAlumnoComponent, data:{titulo: 'Espacios alumno'}, canActivate: [AlumnoGuard]},
             { path: '', redirectTo: '/inicio', pathMatch: 'full' }
         ]
     }

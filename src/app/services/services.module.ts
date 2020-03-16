@@ -9,9 +9,14 @@ import {
     CursoService,
     AsignaturaService,
     FacultadService,
-    LoginService
+    LoginService,
+    ProfesorGuard,
+    AlumnoGuard,
+    ProfesorService,
+    AdministradorGuard
  } from './services.index';
-import { ProfesorService } from './profesor/profesor.service';
+
+
 
 
 
@@ -28,7 +33,10 @@ import { ProfesorService } from './profesor/profesor.service';
     AsignaturaService,
     FacultadService,
     ProfesorService,
-    LoginService
+    LoginService,
+    ProfesorGuard,
+    AlumnoGuard,
+    AdministradorGuard
   ],
   declarations: []
 })

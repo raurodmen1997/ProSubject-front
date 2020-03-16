@@ -1,3 +1,9 @@
+export { AdministradorGuard } from './guards/administrador.guard';
+
+export { AlumnoGuard } from './guards/alumno.guard';
+
+export { ProfesorGuard } from './guards/profesor.guard';
+
 export { LoginService } from './login/login.service';
 
 export { FacultadService } from './facultad/facultad.service';
