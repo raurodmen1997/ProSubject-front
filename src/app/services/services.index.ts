@@ -1,3 +1,5 @@
+export { BreadcrumbsService } from './shared/breadcrumbs.service';
+
 export { AdministradorGuard } from './guards/administrador.guard';
 
 export { AlumnoGuard } from './guards/alumno.guard';

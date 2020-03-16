@@ -3,11 +3,9 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class HeaderService {
+export class BreadcrumbsService {
 
+  menu:any[] = [];
 
-  constructor() { 
-
-  }
-  
+  constructor() { }
 }
