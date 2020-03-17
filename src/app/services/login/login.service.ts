@@ -36,4 +36,11 @@ export class LoginService {
     return !!localStorage.getItem('usuario')
   }
 
+  esProfesor(){
+    if(JSON.parse(localStorage.getItem('usuario')) && JSON.parse(localStorage.getItem('usuario')).userAccount.autoridad === 'PROFESOR'){  
+      return true;
+  }else{
+    return false;
+  }
+  }
 }

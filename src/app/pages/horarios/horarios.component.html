@@ -12,15 +12,27 @@
                                 <li class="list-group-item"><strong>De:</strong> {{horario.fechaInicio}}</li>
                                 <li class="list-group-item"><strong>A:</strong> {{horario.fechaFin}}</li>
                                 <li class="list-group-item"><strong>Capacidad:</strong> {{horario.capacidad}}</li>
-                                <li class="list-group-item"><strong>Alumnos inscritos:</strong> {{horario.alumnos.length}}</li>
+                                <ng-container *ngIf="!loginService.esProfesor(); else profesor">
+                                    <li class="list-group-item"><strong>Alumnos inscritos:</strong> {{horario.alumnos.length}}</li>
+                                </ng-container>
+
+                                <ng-template #profesor>
+                                    <li class="list-group-item">
+                                        <strong>Alumnos inscritos:</strong>
+                                        <div *ngFor="let alumno of horario.alumnos">
+                                             {{alumno.nombre}}
+                                        </div>
+                                    </li>
+                                </ng-template>
                             </ul>
                         </div>
                 </div>
 
-                <button (click) = "inscribirse(horario.id)" class="btn btn-primary">
-                    Inscribirse
-                </button>
-
+                <div *ngIf="!loginService.esProfesor()">
+                    <button (click) = "inscribirse(horario.id)" class="btn btn-primary">
+                        Inscribirse
+                    </button>
+                </div>
                 
             </div>
 
