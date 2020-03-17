@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { EspacioService } from 'src/app/services/services.index';
 import { Router } from '@angular/router';
+import { HorarioService } from 'src/app/services/horario/horario.service';
 
 @Component({
   selector: 'app-espacios-alumno',
@@ -13,23 +13,31 @@ import { Router } from '@angular/router';
 export class EspaciosAlumnoComponent implements OnInit {
 
 
-  espacios:any[];
+  horarios:any[];
 
   
-  constructor(private espaciosService:EspacioService,
+  constructor(private horarioService:HorarioService,
     private router: Router) { }
 
   ngOnInit() {
 
-    this.espaciosService.getEspaciosPorEstudiante(JSON.parse(localStorage.getItem('usuario')).id).subscribe(data=>{
-      this.espacios = data;
-      console.log(this.espacios);
+    this.horarioService.getHorariosPorAlumno(JSON.parse(localStorage.getItem('usuario')).id).subscribe(data=>{
+      this.horarios = data;
+      this.formatearFecha()
+      console.log(this.horarios);
     });
 
   }
 
-  verHorarios(espacioId){
-    this.router.navigate(['horariosAlumno', espacioId, JSON.parse(localStorage.getItem('usuario')).id])
+  formatearFecha(){
+    this.horarios.forEach(element => {
+      let horaInicio = element.fechaInicio.split(':');
+      element.fechaInicio = horaInicio[0]+':'+horaInicio[1]
+
+      let horaFin = element.fechaFin.split(':');
+      element.fechaFin = horaFin[0]+':'+horaFin[1]
+    })
   }
+
 
 }

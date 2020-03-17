@@ -1,19 +1,27 @@
 <div class="row">
-    <div class="col-md-6" *ngFor="let espacio of espacios | paginate: { itemsPerPage: 6, currentPage: currentPage }">
+    <div class="col-md-6" *ngFor="let horario of horarios | paginate: { itemsPerPage: 6, currentPage: currentPage }">
         <div class="card text-center">
             <div class="card-header bg-dark text-white h5 f-flex justify-content-between align-items-center">
-                <strong>{{espacio.profesor.apellido1}} {{espacio.profesor.apellido2}}, {{espacio.profesor.nombre}}</strong>
+                <strong>Profesor: {{horario.espacio.profesor.apellido1}} {{horario.espacio.profesor.apellido2}}, {{horario.espacio.profesor.nombre}}</strong>
+            </div>
+
+            <div class="card-body text-dark h6" id="parentCard">
+                <div class="container">
+                    <i class="fas fa-book"></i> {{horario.espacio.asignatura.nombre}}<br/><br/>
+                    <i class="fas fa-money-bill-wave"></i>{{horario.espacio.precio}}
+
+                    <div class="card rounded mt-3">
+                        <ul class="list-group">
+                            <li class="list-group-item"><strong>De:</strong> {{horario.fechaInicio}}</li>
+                            <li class="list-group-item"><strong>A:</strong> {{horario.fechaFin}}</li>
+                            <li class="list-group-item"><strong>Capacidad:</strong> {{horario.capacidad}}</li>
+                            <li class="list-group-item"><strong>Alumnos inscritos:</strong> {{horario.alumnos.length}}</li>
+                        </ul>
+                    </div>
+                </div>
+                
             </div>
             
-
-            <div class="card-body  text-dark h6" id="parentCard">
-                <i class="fas fa-book"></i> {{espacio.asignatura.nombre}}<br/><br/>
-                
-                <div class="row">
-                    <div class="col-md-12 mb-3"><i class="fas fa-money-bill-wave"></i> {{espacio.precio}}€</div>
-                </div>
-                <button (click)="verHorarios(espacio.id)" class="btn btn-primary">Ver mis horarios</button>
-            </div>
             
         </div>
     </div>

@@ -12,7 +12,6 @@ import { HorariosComponent } from './horarios/horarios.component';
 
 
 import { ProfesorGuard, AlumnoGuard } from '../services/services.index';
-import { ListadoHorariosAlumnoComponent } from './espacios-alumno/listado-horarios-alumno/listado-horarios-alumno.component';
 
 
 
@@ -33,7 +32,6 @@ const pagesRoutes: Routes = [
             {path:'espacios-profesor', component: EspaciosProfesorComponent, data:{titulo: 'Mis espacios'}, canActivate: [ProfesorGuard]},
             {path:'espacios-alumno', component: EspaciosAlumnoComponent, data:{titulo: 'Mis clases'}, canActivate: [AlumnoGuard]},
             {path:'horarios/:id', component: HorariosComponent, data: {titulo: 'Horarios'}},
-            {path:'horariosAlumno/:idEspacio/:idAlumno', component: ListadoHorariosAlumnoComponent, data: {titulo:'Mis horarios'}, canActivate: [AlumnoGuard]},
             { path: '', redirectTo: '/inicio', pathMatch: 'full' }
         ]
     }

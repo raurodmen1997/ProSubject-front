@@ -25,7 +25,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EspaciosProfesorComponent } from './espacios-profesor/espacios-profesor.component';
 import { EspaciosAlumnoComponent } from './espacios-alumno/espacios-alumno.component';
 import { HorariosComponent } from './horarios/horarios.component';
-import { ListadoHorariosAlumnoComponent } from './espacios-alumno/listado-horarios-alumno/listado-horarios-alumno.component';
 
 
 
@@ -41,7 +40,6 @@ import { ListadoHorariosAlumnoComponent } from './espacios-alumno/listado-horari
         EspaciosProfesorComponent,
         EspaciosAlumnoComponent,
         HorariosComponent,
-        ListadoHorariosAlumnoComponent,
     ],
     exports: [
         CommonModule
