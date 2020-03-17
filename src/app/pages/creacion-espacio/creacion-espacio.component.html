@@ -82,7 +82,7 @@
                     <div class="col-md-5" >
                         HORARIO
                         <hr>
-                        <div formArrayName="horarios" *ngFor="let hor of form.get('horarios').controls; let i=index;">
+                        <div formArrayName="horarios" *ngFor="let hor of form.get('horarios')?.controls; let i=index;">
                             <div class="row" [formGroupName]="i">
 
                                 <div class="form-group col-md-3">
@@ -122,41 +122,41 @@
 
                                 <div class="col-md-12 ml-3">
                                     <!--VALIDACION REQUIRED-->
-                                    <div *ngIf="form.get('horarios').controls[i].get('dia').touched && form.get('horarios').controls[i].get('dia').hasError('required')">
+                                    <div *ngIf="form.get('horarios')?.controls[i].get('dia').touched && form.get('horarios')?.controls[i].get('dia').hasError('required')">
                                         El día es requerido
                                     </div>
 
-                                    <div *ngIf="form.get('horarios').controls[i].get('fechaInicio').touched && form.get('horarios').controls[i].get('fechaInicio').hasError('required')">
+                                    <div *ngIf="form.get('horarios')?.controls[i].get('fechaInicio').touched && form.get('horarios')?.controls[i].get('fechaInicio').hasError('required')">
                                         La fecha de inicio es requerida
                                     </div>
 
-                                    <div *ngIf="form.get('horarios').controls[i].get('fechaFin').touched && form.get('horarios').controls[i].get('fechaFin').hasError('required')">
+                                    <div *ngIf="form.get('horarios')?.controls[i].get('fechaFin').touched && form.get('horarios')?.controls[i].get('fechaFin').hasError('required')">
                                         La fecha de fin es requerida
                                     </div>
 
-                                    <div *ngIf="form.get('horarios').controls[i].get('capacidad').touched && form.get('horarios').controls[i].get('capacidad').hasError('required')">
+                                    <div *ngIf="form.get('horarios')?.controls[i].get('capacidad').touched && form.get('horarios')?.controls[i].get('capacidad').hasError('required')">
                                         La capacidad es requerida
                                     </div>
 
                                     <!--VALIDACION PATTERN-->
-                                    <div *ngIf="form.get('horarios').controls[i].get('fechaInicio').touched && form.get('horarios').controls[i].get('fechaInicio').hasError('pattern')">
+                                    <div *ngIf="form.get('horarios')?.controls[i].get('fechaInicio').touched && form.get('horarios')?.controls[i].get('fechaInicio').hasError('pattern')">
                                         Introduce una hora de inicio valida
                                     </div>
                                     
-                                    <div *ngIf="form.get('horarios').controls[i].get('fechaFin').touched && form.get('horarios').controls[i].get('fechaFin').hasError('pattern')">
+                                    <div *ngIf="form.get('horarios')?.controls[i].get('fechaFin').touched && form.get('horarios')?.controls[i].get('fechaFin').hasError('pattern')">
                                         Introduce una hora de fin valida
                                     </div>
 
-                                    <div *ngIf="form.get('horarios').controls[i].get('capacidad').touched && form.get('horarios').controls[i].get('capacidad').hasError('pattern')">
+                                    <div *ngIf="form.get('horarios')?.controls[i].get('capacidad').touched && form.get('horarios')?.controls[i].get('capacidad').hasError('pattern')">
                                         Introduce una capacidad válida
                                     </div>
 
-                                    <div *ngIf="form.get('horarios').controls[i].get('capacidad').touched && form.get('horarios').controls[i].get('capacidad').hasError('min')">
+                                    <div *ngIf="form.get('horarios')?.controls[i].get('capacidad').touched && form.get('horarios')?.controls[i].get('capacidad').hasError('min')">
                                         La capacidad debe ser mayor que 0
                                     </div>
 
                                     <!--VALIDACION HORA INICIO < HORA FIN-->
-                                    <div *ngIf="form.get('horarios').controls[i].touched && form.get('horarios').controls[i].hasError('noValidHour')">
+                                    <div *ngIf="form.get('horarios')?.controls[i].touched && form.get('horarios')?.controls[i].hasError('noValidHour')">
                                         La fecha de fin debe ser mayor que la fecha de inicio
                                     </div>
                                 </div>
