@@ -32,4 +32,8 @@ export class LoginService {
     );
   }
 
+  isLogged(){
+    return !!localStorage.getItem('usuario')
+  }
+
 }

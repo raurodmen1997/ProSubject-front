@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HeaderService } from 'src/app/services/shared/header.service';
 import { Router } from '@angular/router';
-import { BreadcrumbsService } from 'src/app/services/services.index';
+import { BreadcrumbsService, LoginService } from 'src/app/services/services.index';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +10,8 @@ import { BreadcrumbsService } from 'src/app/services/services.index';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private route:Router, private breadcrumbsService:BreadcrumbsService) { }
+  constructor(private route:Router, private breadcrumbsService:BreadcrumbsService,
+    private loginService: LoginService) { }
 
   ngOnInit() {
     
