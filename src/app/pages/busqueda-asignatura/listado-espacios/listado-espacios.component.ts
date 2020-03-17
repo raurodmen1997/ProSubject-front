@@ -10,6 +10,7 @@ import { Router } from "@angular/router";
 export class ListadoEspaciosComponent implements OnInit {
 
   @Input() espacios: any[];
+  currentPage: number = 1;
 
   constructor(private espacioService: EspacioService,
     private router:Router) { }
