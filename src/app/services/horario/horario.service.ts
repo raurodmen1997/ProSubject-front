@@ -32,6 +32,13 @@ export class HorarioService {
     )
   }
 
+  getHorariosPorEspacioAlumno(idEspacio:number, idAlumno: number){
+    let url:string = `${this.urlEndPoint}/${idEspacio}/${idAlumno}`;
+    return this.http.get(url).pipe(
+      map(response => response as any[])
+    )
+  }
+
 
 
   insertarAlumno(horarioId:number, alumnoId:number){
