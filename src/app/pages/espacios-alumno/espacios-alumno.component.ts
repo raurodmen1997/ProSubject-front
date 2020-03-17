@@ -28,14 +28,8 @@ export class EspaciosAlumnoComponent implements OnInit {
 
   }
 
-  getIdFromLocalStorage(){
-    const usuario = localStorage.getItem('usuario').split(',');
-    const id = usuario[0].split(':');
-    return parseInt(id[1]);
-  }
-
   verHorarios(espacioId){
-    this.router.navigate(['horariosAlumno', espacioId, this.getIdFromLocalStorage()])
+    this.router.navigate(['horariosAlumno', espacioId, JSON.parse(localStorage.getItem('usuario')).id])
   }
 
 }

@@ -168,19 +168,12 @@ export class CreacionEspacioComponent implements OnInit {
     });
   }
 
-  getIdFromLocalStorage(){
-    const usuario = localStorage.getItem('usuario').split(',');
-    const id = usuario[0].split(':');
-    return parseInt(id[1]);
-  }
-
-
   submit(){
 
     this.asignaturaService.getAsignaturaPorId(this.form.get('asignatura').value).subscribe(
       res => {
         this.asignatura = res;
-        this.profesorService.getProfesorPorId(this.getIdFromLocalStorage()).subscribe(
+        this.profesorService.getProfesorPorId(JSON.parse(localStorage.getItem('usuario')).id).subscribe(
           res => {
             this.profesor = res,
             this.espacio.precio = this.form.get('precio').value;
