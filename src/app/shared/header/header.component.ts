@@ -10,8 +10,8 @@ import { BreadcrumbsService, LoginService } from 'src/app/services/services.inde
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private route:Router, private breadcrumbsService:BreadcrumbsService,
-    private loginService: LoginService) { }
+  constructor(private route:Router, public breadcrumbsService:BreadcrumbsService,
+    public loginService: LoginService) { }
 
   ngOnInit() {
     
