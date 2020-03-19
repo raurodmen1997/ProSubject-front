@@ -20,6 +20,7 @@
               </div>
               <div *ngIf="!loginService.isLogged()">
                 <a class="dropdown-item" routerLinkActive="active" routerLink="/login"><i class="fas fa-user"></i>Login</a>
+                <a class="dropdown-item" routerLinkActive="active" routerLink="/registro"><i class="fas fa-user-plus"></i>Registro</a>
               </div>
               <div *ngIf="loginService.isLogged()">
                 <div class="dropdown-divider"></div>

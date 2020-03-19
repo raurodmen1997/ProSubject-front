@@ -12,6 +12,7 @@ import { HorariosComponent } from './horarios/horarios.component';
 
 
 import { ProfesorGuard, AlumnoGuard } from '../services/services.index';
+import { RegistroComponent } from './registro/registro.component';
 
 
 
@@ -24,6 +25,8 @@ const pagesRoutes: Routes = [
             { path: 'busqueda-asignatura', component: BusquedaAsignaturaComponent, data:{titulo:'Busqueda de espacios'} },
             { path: 'inicio', component: HomeComponent, data:{titulo:'Inicio'} },
             { path:'login', component:LoginComponent, data:{titulo:'Inicio sesión'}},
+            { path:'registro', component:RegistroComponent, data:{titulo:'Registro'}},
+
 
 
             //----CRISTIAN----

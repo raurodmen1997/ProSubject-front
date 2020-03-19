@@ -40,6 +40,13 @@ export class HorarioService {
     )
   }
 
+  getHorariosPorProfesor(idProfesor: number){
+    let url:string = `${this.urlEndPoint}/profesor/${idProfesor}`;
+    return this.http.get(url).pipe(
+      map(response => response as any[])
+    )
+  }
+
 
 
   insertarAlumno(horarioId:number, alumnoId:number){
