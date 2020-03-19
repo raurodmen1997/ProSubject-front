@@ -7,6 +7,8 @@ import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import swal from 'sweetalert2';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
+
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +21,7 @@ export class EspacioService {
   });
 
   //Inyección de dependencia
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private route:Router) { }
 
   getEspacios(): Observable<any[]> {
     return this.http.get(this.urlEndPoint).pipe(
@@ -38,7 +40,13 @@ export class EspacioService {
   getEspaciosPorId(id: number){
     let url:string = `${this.urlEndPoint}/${id}`;
     return this.http.get(url).pipe(
-      map(response => response as any)
+      map(response => response as any),
+      catchError(e =>{
+        console.error(e.error.mensaje);
+        swal.fire('Error al acceder a los espacios de un profesor.', `${e.error.mensaje}`, 'error');
+        this.route.navigate(['/inicio']);
+        return throwError(e);
+      })
     );
   }
 
